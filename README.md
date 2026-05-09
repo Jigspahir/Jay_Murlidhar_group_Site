@@ -1,56 +1,50 @@
-# Jay Murlidhar Tech Solutions — Static Website
+# Jay Murlidhar Group - Full-Stack CRM & Website
 
-Production-ready, **plain HTML / CSS / JavaScript** version of the site.
-No build step, no dependencies — just open or upload.
+A comprehensive enterprise-level platform for Jay Murlidhar Group, integrating a public-facing service website with an internal CRM dashboard for managing customers, invoices, quotations, and documents.
 
-## Folder structure
+## Project Structure
 
-```
-jay-murlidhar-static/
-├── index.html          # Single-page site (Navbar, Hero, Services, About, CTA, Contact, Footer)
-├── css/
-│   └── style.css       # All styles, design tokens, animations, responsive rules
-├── js/
-│   └── script.js       # Mobile menu, scroll reveal, services render, contact form
-├── assets/
-│   ├── logo.jpg        # Brand logo
-│   └── hero.jpg        # Hero background image
-└── README.md
-```
+The codebase is organized into a modular structure:
 
-## Run locally
+- `src/website/`: The public website pages, styles, and scripts.
+- `src/crm/`: The internal CRM dashboard, split into feature modules (customer, invoice, quotation).
+- `src/shared/`: Reusable UI components (Navbar, Sidebar, Footer, Modal) and global utility functions.
+- `src/firebase/`: Firebase client SDK integrations.
+- `src/backend/`: Server-side logic via Firebase Cloud Functions.
+- `public/`: Static assets such as images and icons.
 
-Just double-click `index.html`, or for a local server:
+For a deeper dive into the architectural design, please refer to [docs/Architecture.md](docs/Architecture.md).
 
+## Deployment Setup
+
+This project is configured for deployment on multiple platforms.
+
+### Firebase Hosting
+Ensure you have the Firebase CLI installed:
 ```bash
-# Python 3
-python3 -m http.server 8080
-# then open http://localhost:8080
+npm install -g firebase-tools
+```
+Deploy the project:
+```bash
+firebase deploy --only hosting
 ```
 
-## Deploy
+### Vercel
+The project includes a `vercel.json` for automatic routing and deployment on Vercel. Connect your repository to Vercel to trigger auto-deployments.
 
-Upload the whole folder to **any** static host:
-- Netlify (drag & drop)
-- Vercel (Static project)
-- GitHub Pages
-- Cloudflare Pages
-- Hostinger / cPanel `public_html`
+## Development
 
-## Customise
-
-- Brand colors / fonts → `:root` block in `css/style.css`
-- Services list → `services` array at the top of `js/script.js`
-- Contact info → search `9909461768` and `info.jaymurlidhargroup@gmail.com` across `index.html`
-- WhatsApp number → `whatsappBtn` link in `index.html`
+To run the project locally, you can use any static file server or Vite for a better developer experience:
+```bash
+npx serve .
+```
+Or if using Vite:
+```bash
+npm run dev
+```
 
 ## Features
 
-- ✅ Fully responsive (mobile, tablet, desktop)
-- ✅ Sticky, blurred navbar with mobile hamburger
-- ✅ Hero with gradient overlay & background image
-- ✅ Animated service cards (scroll-reveal + hover lift)
-- ✅ About section with mission & checklist
-- ✅ Contact form (opens user's email client) + WhatsApp floating button
-- ✅ SEO: title, meta description, Open Graph, Twitter card, JSON-LD LocalBusiness
-- ✅ Accessible: semantic HTML, focus styles, `prefers-reduced-motion` support
+- **Public Website:** SEO-optimized, responsive pages detailing insurance, tech, and business services.
+- **Admin CRM:** Secure panel to manage leads, generate GST-compliant PDF invoices, and process quotations.
+- **Firebase Integration:** Real-time data storage, secure authentication, and cloud file storage for PDFs and images.

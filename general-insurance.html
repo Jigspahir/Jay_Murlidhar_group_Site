@@ -62,6 +62,7 @@
       font-weight: bold;
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <!-- Preloader -->
@@ -78,50 +79,106 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="index.html#home" class="nav-link" style="color: #1f2937;">Home</a>
         <a href="index.html#about" class="nav-link" style="color: #1f2937;">About</a>
-        <div class="dropdown">
-          <a href="index.html#services" class="nav-link" style="color: #1f2937;">Services <span style="font-size: 0.7em; vertical-align: middle;">▼</span></a>
-          <div class="dropdown-menu">
-            <span class="dropdown-header">Insurance</span>
-            <a href="general-insurance.html" class="dropdown-item">General Insurance</a>
-            <a href="life-insurance.html" class="dropdown-item">Life Insurance</a>
-            <a href="term-insurance.html" class="dropdown-item">Term Insurance</a>
-            <a href="investment.html" class="dropdown-item">Investment</a>
-            <a href="health-insurance.html" class="dropdown-item">Health Insurance</a>
-            <a href="other-insurance.html" class="dropdown-item">Other Insurance</a>
-            <div class="dropdown-divider"></div>
-            <span class="dropdown-header">Business Registration</span>
-            <a href="index.html#contact" class="dropdown-item">GST Registration</a>
-            <a href="index.html#contact" class="dropdown-item">MSME Registration</a>
-            <a href="index.html#contact" class="dropdown-item">PAN/TAN Card</a>
-            <div class="dropdown-divider"></div>
-            <span class="dropdown-header">RTO & Other</span>
-            <a href="index.html#contact" class="dropdown-item">Vehicle RTO Services</a>
-            <a href="index.html#contact" class="dropdown-item">License Assistance</a>
-            <a href="index.html#contact" class="dropdown-item">Freelance Support</a>
+                        <div class="dropdown">
+          <a href="index.html#services" class="nav-link">Services <span
+              style="font-size: 0.7em; vertical-align: middle;">▼</span></a>
+          <div class="dropdown-menu" style="grid-template-columns: repeat(4, 1fr); width: 900px;">
+            
+            <!-- Column 1: Insurance Services -->
+            <div class="dropdown-column">
+              <span class="dropdown-header">Insurance Services</span>
+              <a href="service-detail.html?service=Life+Insurance" class="dropdown-item">Life Insurance</a>
+              <a href="service-detail.html?service=Health+Insurance" class="dropdown-item">Health Insurance</a>
+              <a href="service-detail.html?service=Motor+Insurance" class="dropdown-item">Motor Insurance</a>
+              <a href="service-detail.html?service=Bike+Insurance" class="dropdown-item">Bike Insurance</a>
+              <a href="service-detail.html?service=Car+Insurance" class="dropdown-item">Car Insurance</a>
+              <a href="service-detail.html?service=Commercial+Vehicle+Insurance" class="dropdown-item">Commercial Vehicle Insurance</a>
+              <a href="service-detail.html?service=Business+Insurance" class="dropdown-item">Business Insurance</a>
+              <a href="service-detail.html?service=Shop+Insurance" class="dropdown-item">Shop Insurance</a>
+              <a href="service-detail.html?service=Factory+Insurance" class="dropdown-item">Factory Insurance</a>
+              <a href="service-detail.html?service=Marine+Insurance" class="dropdown-item">Marine Insurance</a>
+              <a href="service-detail.html?service=Fire+Insurance" class="dropdown-item">Fire Insurance</a>
+              <a href="service-detail.html?service=Travel+Insurance" class="dropdown-item">Travel Insurance</a>
+              <a href="service-detail.html?service=Crop+Insurance" class="dropdown-item">Crop Insurance</a>
+              <a href="service-detail.html?service=Cyber+Insurance" class="dropdown-item">Cyber Insurance</a>
+              <a href="service-detail.html?service=Employee+Insurance" class="dropdown-item">Employee Insurance</a>
+              <a href="service-detail.html?service=LIC+Plans" class="dropdown-item">LIC Plans</a>
+              <a href="service-detail.html?service=PM+Jeevan+Jyoti+Bima" class="dropdown-item">PM Jeevan Jyoti Bima</a>
+              <a href="service-detail.html?service=PM+Suraksha+Bima" class="dropdown-item">PM Suraksha Bima</a>
+              <a href="service-detail.html?service=Ayushman+Bharat" class="dropdown-item">Ayushman Bharat</a>
+            </div>
+
+            <!-- Column 2: CSC & Business Services -->
+            <div class="dropdown-column">
+              <span class="dropdown-header">CSC & Business Services</span>
+              <a href="service-detail.html?service=GST+Registration+and+Filing" class="dropdown-item">GST Registration & Filing</a>
+              <a href="service-detail.html?service=MSME+Registration" class="dropdown-item">MSME Registration</a>
+              <a href="service-detail.html?service=PAN+TAN+Card" class="dropdown-item">PAN / TAN Card</a>
+              <a href="service-detail.html?service=Shop+Act+License" class="dropdown-item">Shop Act License</a>
+              <a href="service-detail.html?service=FSSAI+Registration" class="dropdown-item">FSSAI Registration</a>
+              <a href="service-detail.html?service=Income+Tax+Filing" class="dropdown-item">Income Tax Filing</a>
+              <a href="service-detail.html?service=Digital+Signature" class="dropdown-item">Digital Signature (DSC)</a>
+              <a href="service-detail.html?service=Udyam+Registration" class="dropdown-item">Udyam Registration</a>
+              <a href="service-detail.html?service=Online+Documentation" class="dropdown-item">Online Documentation</a>
+              <a href="service-detail.html?service=Government+Schemes" class="dropdown-item">Government Schemes</a>
+              <a href="service-detail.html?service=Banking+Services" class="dropdown-item">Banking Services</a>
+              <a href="service-detail.html?service=Bill+Payments" class="dropdown-item">Bill Payments</a>
+              <a href="service-detail.html?service=Aadhaar+Services" class="dropdown-item">Aadhaar Services</a>
+            </div>
+
+            <!-- Column 3: Tech Services -->
+            <div class="dropdown-column">
+              <span class="dropdown-header">Tech Services</span>
+              <a href="service-detail.html?service=Website+Design" class="dropdown-item">Website Design</a>
+              <a href="service-detail.html?service=Website+Development" class="dropdown-item">Website Development</a>
+              <a href="service-detail.html?service=App+Development" class="dropdown-item">App Development</a>
+              <a href="service-detail.html?service=Software+Development" class="dropdown-item">Software Development</a>
+              <a href="service-detail.html?service=Digital+Marketing" class="dropdown-item">Digital Marketing</a>
+              <a href="service-detail.html?service=Social+Media+Marketing" class="dropdown-item">Social Media Marketing</a>
+              <a href="service-detail.html?service=Graphic+Design" class="dropdown-item">Graphic Design</a>
+              <a href="service-detail.html?service=SEO+Services" class="dropdown-item">SEO Services</a>
+              <a href="service-detail.html?service=WhatsApp+API+Solutions" class="dropdown-item">WhatsApp API Solutions</a>
+              <a href="service-detail.html?service=Bulk+SMS+Services" class="dropdown-item">Bulk SMS Services</a>
+              <a href="service-detail.html?service=Hosting+and+Domain" class="dropdown-item">Hosting & Domain</a>
+              <a href="service-detail.html?service=AI+Chatbot+Development" class="dropdown-item">AI Chatbot Development</a>
+            </div>
+
+            <!-- Column 4: Academy -->
+            <div class="dropdown-column">
+              <span class="dropdown-header">Academy</span>
+              <a href="service-detail.html?service=Computer+Courses" class="dropdown-item">Computer Courses</a>
+              <a href="service-detail.html?service=Tally+Course" class="dropdown-item">Tally Course</a>
+              <a href="service-detail.html?service=Basic+IT+Training" class="dropdown-item">Basic IT Training</a>
+              <a href="service-detail.html?service=Digital+Marketing+Training" class="dropdown-item">Digital Marketing Training</a>
+              <a href="service-detail.html?service=Web+Development+Course" class="dropdown-item">Web Development Course</a>
+              <a href="service-detail.html?service=Spoken+English" class="dropdown-item">Spoken English</a>
+              <a href="service-detail.html?service=Government+Exam+Preparation" class="dropdown-item">Government Exam Preparation</a>
+              <a href="service-detail.html?service=Skill+Development+Programs" class="dropdown-item">Skill Development Programs</a>
+              <a href="service-detail.html?service=Internship+Programs" class="dropdown-item">Internship Programs</a>
+              <a href="service-detail.html?service=Student+Guidance" class="dropdown-item">Student Guidance</a>
+            </div>
+
           </div>
         </div>
         <a href="index.html#team" class="nav-link" style="color: #1f2937;">Team</a>
         <a href="index.html#contact" class="nav-link" style="color: #1f2937;">Contact</a>
+        <a href="crm/index.html" class="btn btn-outline nav-cta" style="margin-left: 0.5rem; padding: 0.6rem 1.2rem; font-size: 0.85rem; border-color: rgba(255,255,255,0.3);"><i class="fas fa-lock"></i> JMG Admin Panel</a>
         <a href="index.html#contact" class="btn btn-gold nav-cta">Get a Quote</a>
-      </nav>
-    </div>
+      </nav>    </div>
   </header>
 
   <main>
-    <section class="section" style="padding-top: 150px; min-height: 70vh;">
+    <section class="section" style="padding-top: 150px; padding-bottom: 3rem;">
       <div class="container">
         <div class="section-head reveal" style="text-align: center; margin-bottom: 1rem;">
           <span class="eyebrow">Insurance Services</span>
           <h2 style="font-size: 2.8rem;">General Insurance Solutions</h2>
           <p style="max-width: 700px; margin: 0 auto; font-size: 1rem;">Protecting your assets and peace of mind with versatile insurance products tailored for every need.</p>
         </div>
-        <div style="text-align: center;">
-            <span style="font-size: 3.5rem; display: block;">🚗</span>
-        </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="padding-top: 0;">
       <div class="container">
         
             <div class="grid grid-2" style="text-align: left; margin-top: 3rem; gap: 2rem;">
@@ -177,7 +234,6 @@
               
               <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; text-align: center;">
                 <div class="about-card reveal">
-                  <div style="font-size: 5rem; height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">🚗</div>
                   <h5 style="color: #000; font-weight: 700;">Car<br>Insurance</h5>
                 </div>
                 <div class="about-card reveal">
@@ -229,9 +285,11 @@
           <a href="index.html#services">Services</a>
           <a href="index.html#contact">Contact</a>
           <a href="general-insurance.html">Insurance</a>
+          <a href="index.html#contact">Motor Insurance</a>
           <a href="index.html#contact">Business Reg.</a>
           <a href="index.html#contact">RTO Services</a>
-          <a href="index.html#freelancing">Freelancing</a>
+          <a href="index.html#freelancing">Tech Services</a>
+          <a href="index.html#contact">Academy</a>
         </div>
       </div>
 
@@ -247,7 +305,7 @@
           <a href="#" class="social-icon" aria-label="Facebook">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03.74-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v3.8H7v4h3V22h4v-7.5z" /></svg>
           </a>
-          <a href="#" class="social-icon" aria-label="Instagram">
+          <a href="https://www.instagram.com/jaymurlidhargroup_official/" class="social-icon" aria-label="Instagram">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
           </a>
           <a href="#" class="social-icon" aria-label="LinkedIn">
@@ -278,7 +336,10 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <span>© <span id="year"></span> Jay Murlidhar Group. All rights reserved.</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <span>© <span id="year"></span> Jay Murlidhar Group. All rights reserved.</span>
+          <a href="terms.html" style="color: rgba(255,255,255,0.4); text-decoration: underline;">Terms & Conditions</a>
+        </div>
       </div>
     </div>
   </footer>
