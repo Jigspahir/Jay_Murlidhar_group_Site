@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+    background-color: #FAFAFA;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAFAFA;
+    color: #111827;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer utilities {
+  .subtle-border {
+    border: 1px solid #E2E8F0;
+  }
+
+  .text-brand-gradient {
+    background: linear-gradient(135deg, #111827 0%, #2563EB 60%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Fluid typography to prevent clipped letters or horizontal overflow on mobile */
+  .fluid-hero-heading {
+    font-size: clamp(2.2rem, 5.2vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .fluid-section-heading {
+    font-size: clamp(1.85rem, 6vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Safe fluid inline padding */
+  .jmg-container {
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-inline: clamp(16px, 4.5vw, 32px);
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAFAFA;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Accessibility: Respect system reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* JMG Ecosystem Controlled Section & Visual Container */
+.ecosystem-section {
+  height: auto;
+  min-height: 0;
+}
+
+.ecosystem-visual {
+  width: 100%;
+  margin-inline: auto;
+  height: auto;
+  min-height: 0;
+  position: relative;
+}
+
+/* JMG Perfect Circular Radial Ecosystem Orbit & Core */
+.ecosystem-orbit {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  position: relative;
+  margin-inline: auto;
+}
+
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.domain-pill {
+  border-radius: 999px;
+}
+

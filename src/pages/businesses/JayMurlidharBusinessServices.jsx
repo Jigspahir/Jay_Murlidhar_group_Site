@@ -1,0 +1,8 @@
+import React from 'react';
+import { useOutletContext } from 'react-router-dom';
+import CompanyDetailPage from '../CompanyDetailPage';
+
+export default function JayMurlidharBusinessServices() {
+  const context = useOutletContext();
+  return <CompanyDetailPage companySlug="jay-murlidhar-business-services" onOpenContact={context?.onOpenContact} />;
+}

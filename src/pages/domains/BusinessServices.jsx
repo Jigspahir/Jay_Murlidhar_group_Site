@@ -1,0 +1,8 @@
+import React from 'react';
+import { useOutletContext } from 'react-router-dom';
+import DomainDetailPage from '../DomainDetailPage';
+
+export default function BusinessServices() {
+  const context = useOutletContext();
+  return <DomainDetailPage domainId="business-services" onOpenContact={context?.onOpenContact} />;
+}
