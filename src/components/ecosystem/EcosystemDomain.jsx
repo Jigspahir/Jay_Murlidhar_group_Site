@@ -71,11 +71,19 @@ export default function EcosystemDomain({
 
         {/* Number & Domain Name (Horizontal, Unrotated) */}
         <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2">
-          <span className="text-[10.5px] sm:text-[11.5px] md:text-[12.5px] lg:text-[13px] xl:text-[14px] font-mono font-bold text-slate-500">
+          <span className={`font-mono font-bold text-slate-500 ${
+            domain.id === 'business-services'
+              ? 'text-[8px] sm:text-[9px] md:text-[10px] lg:text-[10.5px] xl:text-[11.5px]'
+              : 'text-[8.5px] sm:text-[9.5px] md:text-[10.5px] lg:text-[11px] xl:text-[12px]'
+          }`}>
             {domain.number}
           </span>
           <span
-            className="text-[11px] sm:text-[12.5px] md:text-[14px] lg:text-[15px] xl:text-[17px] font-semibold tracking-tight uppercase whitespace-nowrap text-[#0B1220]"
+            className={`font-semibold tracking-tight uppercase whitespace-nowrap text-[#0B1220] ${
+              domain.id === 'business-services'
+                ? 'text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] xl:text-[13px]'
+                : 'text-[9.5px] sm:text-[10.5px] md:text-[12px] lg:text-[13px] xl:text-[14px]'
+            }`}
           >
             <span className="hidden sm:inline">{domain.name}</span>
             <span className="sm:hidden">{domain.shortName || domain.name}</span>
