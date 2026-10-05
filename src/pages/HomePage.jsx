@@ -3,17 +3,15 @@ import HeroSection from '../components/HeroSection';
 import IntroSection from '../components/IntroSection';
 import EducationTechnology from '../components/EducationTechnology';
 import EducationSection from '../components/EducationSection';
-import TechnologySection from '../components/TechnologySection';
 import ServicesPreview from '../components/ServicesPreview';
 import BusinessEcosystem from '../components/BusinessEcosystem';
 import HowWeBuild from '../components/HowWeBuild';
-import NextGeneration from '../components/NextGeneration';
 import Careers from '../components/Careers';
 import FinalCTA from '../components/FinalCTA';
 
 export default function HomePage({ onOpenContact }) {
   return (
-    <main className="flex-1">
+    <>
       {/* 02 HERO */}
       <HeroSection onOpenContact={onOpenContact} />
 
@@ -26,10 +24,7 @@ export default function HomePage({ onOpenContact }) {
       {/* 05 EDUCATION SECTION */}
       <EducationSection />
 
-      {/* 06 TECHNOLOGY SECTION */}
-      <TechnologySection />
-
-      {/* 07 VERIFIED CLIENT SERVICES PREVIEW */}
+      {/* 06 VERIFIED CLIENT SERVICES PREVIEW */}
       <ServicesPreview />
 
       {/* 08 BUSINESS ECOSYSTEM DIRECTORY */}
@@ -38,14 +33,11 @@ export default function HomePage({ onOpenContact }) {
       {/* 09 HOW WE BUILD */}
       <HowWeBuild />
 
-      {/* 11 NEXT GENERATION */}
-      <NextGeneration />
-
-      {/* 12 CAREERS */}
+      {/* 10 CAREERS */}
       <Careers onOpenContact={onOpenContact} />
 
-      {/* 13 FINAL CTA */}
+      {/* 11 FINAL CTA */}
       <FinalCTA onOpenContact={onOpenContact} />
-    </main>
+    </>
   );
 }

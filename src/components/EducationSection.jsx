@@ -45,7 +45,7 @@ export default function EducationSection() {
             <span className="text-[#1E293B]">ACADEMIC INNOVATION</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6">
+          <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6 break-words">
             EDUCATION,<br />
             <span className="text-[#1E293B]">REIMAGINED.</span>
           </h2>

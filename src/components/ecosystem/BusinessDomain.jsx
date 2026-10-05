@@ -1,28 +1,8 @@
 import React from 'react';
-import { 
-  Cpu, 
-  Coins, 
-  ShieldCheck, 
-  Briefcase, 
-  Building2, 
-  Compass, 
-  Globe2, 
-  Smartphone 
-} from 'lucide-react';
-
-const ICON_MAP = {
-  Cpu,
-  Coins,
-  ShieldCheck,
-  Briefcase,
-  Building2,
-  Compass,
-  Globe2,
-  Smartphone
-};
+import { DOMAIN_ICONS, Cpu } from './ecosystemIcons';
 
 export default function BusinessDomain({ domain, isActive, onSelect }) {
-  const Icon = ICON_MAP[domain.iconName] || Cpu;
+  const Icon = DOMAIN_ICONS[domain.id] || DOMAIN_ICONS[domain.iconName] || Cpu;
 
   return (
     <div
@@ -64,8 +44,9 @@ export default function BusinessDomain({ domain, isActive, onSelect }) {
             backgroundColor: isActive ? `${domain.accent}25` : '#1E293B',
             color: isActive ? domain.accent : '#94A3B8'
           }}
+          aria-hidden="true"
         >
-          <Icon className="w-3.5 h-3.5" />
+          <Icon className="w-3.5 h-3.5" strokeWidth={1.85} />
         </div>
 
         <div className="flex flex-col text-left">

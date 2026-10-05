@@ -15,16 +15,26 @@ export const JMG_CATEGORIES = [
   {
     id: 'technology',
     number: '01',
-    name: 'TECHNOLOGY & DIGITAL',
+    name: 'TECHNOLOGY',
     shortName: 'Technology',
-    description: 'Hardware diagnostics, custom software engineering, institutional ERPs, and digital workflow acceleration.',
+    description: 'Custom software engineering, cloud infrastructure, modern web platforms, and intelligent automation.',
     accent: '#2563EB',
     domainRoute: '/technology',
-    companyIds: ['jay-murlidhar-computer', 'jay-murlidhar-tech-solutions']
+    companyIds: ['jay-murlidhar-tech-solutions']
+  },
+  {
+    id: 'jan-suvidha',
+    number: '02',
+    name: 'JAN SUVIDHA',
+    shortName: 'Jan Suvidha',
+    description: 'A trusted local service centre helping people access essential digital, government and citizen services.',
+    accent: '#10B981',
+    domainRoute: '/jan-suvidha',
+    companyIds: ['jay-murlidhar-computer']
   },
   {
     id: 'insurance',
-    number: '02',
+    number: '03',
     name: 'INSURANCE',
     shortName: 'Insurance',
     description: 'Corporate underwriting, institutional liability risk mitigation, and comprehensive claims advocacy.',
@@ -34,7 +44,7 @@ export const JMG_CATEGORIES = [
   },
   {
     id: 'business-services',
-    number: '03',
+    number: '04',
     name: 'BUSINESS SERVICES',
     shortName: 'Business Services',
     description: 'End-to-end corporate workflow assistance, statutory compliance filings, legal certifications, and operational management.',
@@ -44,7 +54,7 @@ export const JMG_CATEGORIES = [
   },
   {
     id: 'travel',
-    number: '04',
+    number: '05',
     name: 'TRAVEL',
     shortName: 'Travel',
     description: 'Curated institutional study tours, university student delegations, faculty expeditions, and seamless corporate itineraries.',
@@ -54,7 +64,7 @@ export const JMG_CATEGORIES = [
   },
   {
     id: 'retail',
-    number: '05',
+    number: '06',
     name: 'RETAIL',
     shortName: 'Retail',
     description: 'Smart mobility hardware, student computing device provisioning, and certified electronics servicing.',
@@ -71,17 +81,31 @@ export const JMG_DOMAINS = [
     name: 'TECHNOLOGY',
     categoryTitle: 'TECHNOLOGY & DIGITAL',
     shortCategory: 'Technology & Digital Systems',
-    description: 'Hardware diagnostics, custom software engineering, institutional ERPs, and digital workflow acceleration.',
+    description: 'Custom software engineering, scalable cloud infrastructure, modern web platforms, and intelligent automation.',
     domainRoute: '/technology',
     accent: '#38BDF8',
     glowColor: 'rgba(56, 189, 248, 0.28)',
     iconName: 'Cpu',
+    coords: { x: 25, y: 35 },
+    companySlugs: ['jay-murlidhar-tech-solutions']
+  },
+  {
+    id: 'jan-suvidha',
+    number: '02',
+    name: 'JAN SUVIDHA',
+    categoryTitle: 'JAN SUVIDHA / CITIZEN SERVICES',
+    shortCategory: 'Citizen & Public Services',
+    description: 'A trusted local service centre helping people access essential digital, government and citizen services.',
+    domainRoute: '/jan-suvidha',
+    accent: '#10B981',
+    glowColor: 'rgba(16, 185, 129, 0.28)',
+    iconName: 'Landmark',
     coords: { x: 50, y: 12 },
-    companySlugs: ['jay-murlidhar-computer', 'jay-murlidhar-tech-solutions']
+    companySlugs: ['jay-murlidhar-computer']
   },
   {
     id: 'insurance',
-    number: '02',
+    number: '03',
     name: 'INSURANCE',
     categoryTitle: 'INSURANCE & RISK',
     shortCategory: 'Enterprise Risk & Underwriting',
@@ -90,12 +114,12 @@ export const JMG_DOMAINS = [
     accent: '#06B6D4',
     glowColor: 'rgba(6, 182, 212, 0.28)',
     iconName: 'ShieldCheck',
-    coords: { x: 82, y: 35 },
+    coords: { x: 75, y: 35 },
     companySlugs: ['jay-murlidhar-insurance']
   },
   {
     id: 'business-services',
-    number: '03',
+    number: '04',
     name: 'BUSINESS SERVICES',
     categoryTitle: 'BUSINESS SERVICES',
     shortCategory: 'Corporate Governance & Compliance',
@@ -104,12 +128,12 @@ export const JMG_DOMAINS = [
     accent: '#F97316',
     glowColor: 'rgba(249, 115, 22, 0.28)',
     iconName: 'Briefcase',
-    coords: { x: 72, y: 78 },
+    coords: { x: 75, y: 75 },
     companySlugs: ['jay-murlidhar-business-services']
   },
   {
     id: 'travel',
-    number: '04',
+    number: '05',
     name: 'TRAVEL',
     categoryTitle: 'MOBILITY & TOURS',
     shortCategory: 'Educational & Corporate Mobility',
@@ -117,13 +141,13 @@ export const JMG_DOMAINS = [
     domainRoute: '/travel',
     accent: '#F59E0B',
     glowColor: 'rgba(245, 158, 11, 0.28)',
-    iconName: 'Compass',
-    coords: { x: 28, y: 78 },
+    iconName: 'Plane',
+    coords: { x: 50, y: 88 },
     companySlugs: ['jay-murlidhar-tours']
   },
   {
     id: 'retail',
-    number: '05',
+    number: '06',
     name: 'RETAIL',
     categoryTitle: 'SMART DEVICES & HARDWARE',
     shortCategory: 'Smart Devices & Mobility Hardware',
@@ -132,7 +156,7 @@ export const JMG_DOMAINS = [
     accent: '#EC4899',
     glowColor: 'rgba(236, 72, 153, 0.28)',
     iconName: 'Smartphone',
-    coords: { x: 18, y: 35 },
+    coords: { x: 25, y: 75 },
     companySlugs: ['jay-murlidhar-mobile-accessories']
   }
 ];
@@ -141,90 +165,76 @@ export const JMG_COMPANIES = [
   {
     id: 'jay-murlidhar-computer',
     slug: 'jay-murlidhar-computer',
-    domain: 'technology',
-    domainName: 'Technology & Digital',
-    domainRoute: '/technology',
-    route: '/technology/jay-murlidhar-computer',
-    path: '/technology/jay-murlidhar-computer',
+    domain: 'jan-suvidha',
+    domainName: 'Jan Suvidha',
+    domainRoute: '/jan-suvidha',
+    route: '/jan-suvidha/jay-murlidhar-computer',
+    path: '/jan-suvidha/jay-murlidhar-computer',
     name: 'Jay Murlidhar Computer',
-    subtitle: 'Computer & Digital Services',
-    category: 'TECHNOLOGY & DIGITAL',
-    categoryId: 'technology',
+    subtitle: 'CSC / Jan Suvidha Kendra',
+    category: 'JAN SUVIDHA / CITIZEN SERVICES',
+    categoryId: 'jan-suvidha',
     number: '01',
-    description: 'Computer & Digital Services',
-    tagline: 'Reliable computing hardware and local digital infrastructure.',
-    shortDescription: 'Computer hardware diagnostics, workstation assemblies, networking setups, and local IT maintenance.',
-    about: 'For more than a decade, Jay Murlidhar Computer has operated as a foundational technology pillar of the group. We deliver high-integrity hardware maintenance, component diagnostics, custom workstation configurations, and dependable network setups for academic institutions, corporate offices, and local businesses.',
+    description: 'Common Services Centres (CSCs) provide Government-to-Citizen (G2C) and Business-to-Citizen (B2C) e-Services, helping people access essential digital and public services through a trusted local service centre.',
+    tagline: 'Your Trusted Neighbourhood Kiosk for All Digital Services',
+    shortDescription: 'A trusted local service centre helping people access essential digital, government and citizen services.',
+    about: 'Common Services Centres (CSCs) provide Government-to-Citizen (G2C) and Business-to-Citizen (B2C) e-Services, helping people access essential digital and public services through a trusted local service centre. Jay Murlidhar Computer helps bridge the gap between people and essential digital, government and business services through a convenient neighbourhood service centre.',
+    editorialStatement: 'Digital access, closer to home.',
+    editorialSupporting: 'Jay Murlidhar Computer helps bridge the gap between people and essential digital, government and business services through a convenient neighbourhood service centre.',
     image: '/assets/hero.jpg',
     logo: '/assets/jay-murlidhar-computer-logo-jpg.jpg',
-    accentColor: '#2563EB',
+    accentColor: '#10B981',
     active: true,
     services: [
       {
-        id: 'rto-services',
+        id: 'government-citizen-services',
         number: '01',
-        title: 'RTO Services',
-        subtitle: 'Vehicle Registration, Ownership Transfer & Licensing',
-        description: 'Complete RTO services including vehicle registration, ownership transfer, driving license assistance, and online documentation with fast and reliable support.',
-        details: 'Vehicle registration, ownership transfer, driving licence assistance and online documentation support handled through streamlined government portals with fast turnaround.',
+        title: 'Government / Citizen Services (G2C)',
+        subtitle: 'Aadhaar, Banking, Bill Payments, Government Schemes & RTO',
+        tagline: 'G2C e-Services',
+        description: 'Direct citizen service assistance for online government portals, utility payments, and statutory citizen documentation.',
+        details: 'Assistance delivered through government and digital service channels to help citizens access public documentation, scheme registrations, and daily utility services.',
         items: [
-          'Vehicle Registration',
-          'Ownership Transfer',
-          'Driving Licence Assistance',
-          'Online Documentation',
-          'RTO Support'
-        ]
-      },
-      {
-        id: 'csc-business-services',
-        number: '02',
-        title: 'CSC & Business Services',
-        subtitle: 'Government Filings, Licensing & Citizen Support',
-        description: 'End-to-end business solutions with GST registration & filing, MSME registration, Shop Act license, FSSAI registration, and expert support for smooth operations.',
-        details: 'GST, MSME, Shop Act, FSSAI and citizen documentation support designed to ensure full statutory compliance and hassle-free commercial operations.',
-        items: [
-          'GST Registration & Filing',
-          'MSME Registration',
-          'PAN / TAN Card',
-          'Shop Act License',
-          'FSSAI Registration',
-          'Income Tax Filing',
-          'Digital Signature (DSC)',
-          'Udyam Registration',
-          'Online Documentation',
-          'Government Schemes',
+          'Aadhaar Services',
           'Banking Services',
           'Bill Payments',
-          'Aadhaar Services'
+          'Government Schemes',
+          'Online Documentation',
+          'RTO Services'
         ]
       },
       {
-        id: 'business-registration',
-        number: '03',
-        title: 'Business Registration',
-        subtitle: 'GST, MSME, Shop Act & FSSAI Business Documentation',
-        description: 'Official business registration support including GST, MSME, Shop Act, FSSAI certification, and commercial documentation.',
-        details: 'Comprehensive statutory business registration and commercial documentation support to ensure legal compliance and operational readiness.',
+        id: 'business-documentation-services',
+        number: '02',
+        title: 'Business & Documentation Services (B2C)',
+        subtitle: 'GST, MSME, PAN/TAN, Shop Act, FSSAI, IT Filing, DSC & Udyam',
+        tagline: 'B2C Business Support',
+        description: 'Comprehensive commercial documentation, statutory business registrations, tax filings, and enterprise certifications.',
+        details: 'Digital and business services helping individuals, traders, and local enterprises secure essential business licenses and compliance filings.',
         items: [
           'GST Registration & Filing',
           'MSME Registration',
-          'Shop Act License',
-          'FSSAI Certification',
-          'Business Documentation'
+          'PAN / TAN',
+          'Shop Act',
+          'FSSAI',
+          'Income Tax Filing',
+          'DSC',
+          'Udyam',
+          'Business Registration'
         ]
       },
       {
         id: 'academy-services',
-        number: '04',
-        title: 'Academy',
-        subtitle: 'Computer Courses, Tally & Practical IT Training',
+        number: '03',
+        title: 'Academy / Digital Skills',
+        subtitle: 'Computer Courses, Tally, Basic IT & Skill Development',
         tagline: 'Learn. Build. Grow.',
         description: 'Practical computer education, IT training, and skill development programs tailored for students, job aspirants, and local entrepreneurs.',
         details: 'Hands-on learning covering computer fundamentals, Tally accounting, web basics, spoken English, and competitive exam preparation.',
         items: [
           'Computer Courses',
-          'Tally Course',
-          'Basic IT Training',
+          'Tally',
+          'Basic IT',
           'Digital Marketing Training',
           'Web Development Course',
           'Spoken English',
@@ -233,15 +243,15 @@ export const JMG_COMPANIES = [
       }
     ],
     whyThisBusiness: [
-      'Over a decade of hands-on hardware engineering experience across thousands of systems.',
-      'Transparent component pricing with genuine manufacturer warranty coverage.',
-      'Rapid turnaround times for mission-critical institutional lab disruptions.',
-      'Seamless integration with JMG software engineering solutions.'
+      'Convenient local access — easily accessible neighbourhood service centre.',
+      'Digital assistance — guided hands-on support for online applications and portals.',
+      'Multiple services in one place — citizen schemes, RTO, business licenses, and digital skills.',
+      'Simple service experience — clear, step-by-step assistance without confusion.'
     ],
     stats: [
-      { label: 'Systems Serviced', value: '12,500+' },
-      { label: 'Institutional Labs', value: '45+' },
-      { label: 'Turnaround Time', value: '< 24 Hours' }
+      { label: 'Service Scope', value: 'G2C & B2C' },
+      { label: 'Citizen Access', value: 'Neighbourhood Kiosk' },
+      { label: 'Service Model', value: 'Guided Assistance' }
     ],
     relatedSlugs: ['jay-murlidhar-tech-solutions', 'jay-murlidhar-business-services', 'jay-murlidhar-mobile-accessories']
   },
@@ -258,7 +268,7 @@ export const JMG_COMPANIES = [
     subtitle: 'Technology & Software Solutions',
     category: 'TECHNOLOGY & DIGITAL',
     categoryId: 'technology',
-    number: '02',
+    number: '01',
     description: 'Technology & Software Solutions',
     tagline: 'Enterprise digital architectures, education ERPs, and modern web platforms.',
     shortDescription: 'High-performance web development, custom software engineering, cloud infrastructure, and intelligent institutional automation.',
@@ -322,7 +332,7 @@ export const JMG_COMPANIES = [
     tagline: 'Comprehensive asset protection, corporate indemnity, and claims advocacy.',
     shortDescription: 'General insurance, corporate risk management, employee medical coverage, property protection, and claims support.',
     about: 'Jay Murlidhar Insurance protects commercial enterprises, institutions, and individuals against unforeseen operational and personal liabilities. We analyze risk exposures, structure cost-effective coverage, and provide decisive claims advocacy when it matters most.',
-    image: '/assets/HERO2.jpg',
+    image: '/assets/jay-murlidhar-insurance-card.png',
     logo: '/assets/jay murlidhar insurance.svg',
     accentColor: '#0284C7',
     active: true,
@@ -550,7 +560,7 @@ export const JMG_COMPANIES = [
 
 export const JMG_ECOSYSTEM_STATS = {
   totalCompanies: '6',
-  sectorsCovered: '5 Canonical Domains',
+  sectorsCovered: '6 Canonical Domains',
   ecosystemFoundation: 'Est. Long-Term Vision',
   governance: 'Centralized Parent Leadership'
 };
@@ -564,6 +574,7 @@ export const JMG_ECOSYSTEM_NAV = {
   ecosystem: [
     { label: 'All Businesses', href: '/ecosystem' },
     { label: 'Technology', href: '/technology' },
+    { label: 'Jan Suvidha', href: '/jan-suvidha' },
     { label: 'Insurance', href: '/insurance' },
     { label: 'Business Services', href: '/business-services' },
     { label: 'Travel', href: '/travel' },
@@ -629,16 +640,24 @@ export const businessRoutes = {
     route: '/technology',
     businesses: [
       {
-        id: 'jay-murlidhar-computer',
-        name: 'Jay Murlidhar Computer',
-        route: '/technology/jay-murlidhar-computer',
-        slug: 'jay-murlidhar-computer',
-      },
-      {
         id: 'jay-murlidhar-tech-solutions',
         name: 'Jay Murlidhar Tech Solutions',
         route: '/technology/jay-murlidhar-tech-solutions',
         slug: 'jay-murlidhar-tech-solutions',
+      },
+    ],
+  },
+
+  janSuvidha: {
+    id: 'jan-suvidha',
+    name: 'Jan Suvidha',
+    route: '/jan-suvidha',
+    businesses: [
+      {
+        id: 'jay-murlidhar-computer',
+        name: 'Jay Murlidhar Computer',
+        route: '/jan-suvidha/jay-murlidhar-computer',
+        slug: 'jay-murlidhar-computer',
       },
     ],
   },

@@ -1,4 +1,45 @@
 {
+  "redirects": [
+    {
+      "source": "/service-detail.html",
+      "has": [{ "type": "query", "key": "service", "value": "Digital Marketing" }],
+      "destination": "/technology",
+      "permanent": true
+    },
+    { "source": "/service-detail.html", "destination": "/solutions", "permanent": true },
+    { "source": "/service-detail", "destination": "/solutions", "permanent": true },
+    { "source": "/general-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/general-insurance", "destination": "/insurance", "permanent": true },
+    { "source": "/health-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/health-insurance", "destination": "/insurance", "permanent": true },
+    { "source": "/life-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/life-insurance", "destination": "/insurance", "permanent": true },
+    { "source": "/term-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/term-insurance", "destination": "/insurance", "permanent": true },
+    { "source": "/other-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/other-insurance", "destination": "/insurance", "permanent": true },
+    { "source": "/investment.html", "destination": "/business-services", "permanent": true },
+    { "source": "/investment", "destination": "/business-services", "permanent": true },
+    { "source": "/finance", "destination": "/business-services", "permanent": true },
+    { "source": "/finance/(.*)", "destination": "/business-services", "permanent": true },
+    { "source": "/infrastructure", "destination": "/technology", "permanent": true },
+    { "source": "/infrastructure/(.*)", "destination": "/technology", "permanent": true },
+    { "source": "/trade-export", "destination": "/business-services", "permanent": true },
+    { "source": "/trade-export/(.*)", "destination": "/business-services", "permanent": true },
+    { "source": "/trade", "destination": "/business-services", "permanent": true },
+    { "source": "/trade/(.*)", "destination": "/business-services", "permanent": true },
+    { "source": "/terms.html", "destination": "/about", "permanent": true },
+    { "source": "/terms", "destination": "/about", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/general-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/health-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/life-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/term-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/other-insurance.html", "destination": "/insurance", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/investment.html", "destination": "/business-services", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/index.html", "destination": "/", "permanent": true },
+    { "source": "/Jay_Murlidhar_group_Site/(.*)", "destination": "/", "permanent": true },
+    { "source": "/jay_murlidhar_group_site/(.*)", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

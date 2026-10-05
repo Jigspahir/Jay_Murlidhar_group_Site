@@ -1,1 +1,52 @@
-/*    /index.html   200
+# ==============================================================================
+# JAY MURLIDHAR GROUP — HOSTING 301 PERMANENT REDIRECT RULES
+# ==============================================================================
+
+# Specific legacy service query redirects
+/service-detail.html  service=Digital+Marketing  /technology         301!
+/service-detail.html  service=Digital*           /technology         301!
+/service-detail.html  service=*Insurance*        /insurance          301!
+
+# Legacy service-detail base URLs
+/service-detail.html                             /solutions          301!
+/service-detail                                  /solutions          301!
+
+# Legacy Insurance pages
+/general-insurance.html                          /insurance          301!
+/general-insurance                               /insurance          301!
+/health-insurance.html                           /insurance          301!
+/health-insurance                                /insurance          301!
+/life-insurance.html                             /insurance          301!
+/life-insurance                                  /insurance          301!
+/term-insurance.html                             /insurance          301!
+/term-insurance                                  /insurance          301!
+/other-insurance.html                            /insurance          301!
+/other-insurance                                 /insurance          301!
+
+# Legacy Investment, Finance, Infrastructure, Trade & Legal pages
+/investment.html                                 /business-services  301!
+/investment                                      /business-services  301!
+/finance                                         /business-services  301!
+/finance/*                                       /business-services  301!
+/infrastructure                                  /technology         301!
+/infrastructure/*                                /technology         301!
+/trade-export                                    /business-services  301!
+/trade-export/*                                  /business-services  301!
+/trade                                           /business-services  301!
+/trade/*                                         /business-services  301!
+/terms.html                                      /about              301!
+/terms                                           /about              301!
+
+# Legacy Subfolder Deployment (Jay_Murlidhar_group_Site/)
+/Jay_Murlidhar_group_Site/general-insurance.html /insurance          301!
+/Jay_Murlidhar_group_Site/health-insurance.html  /insurance          301!
+/Jay_Murlidhar_group_Site/life-insurance.html    /insurance          301!
+/Jay_Murlidhar_group_Site/term-insurance.html    /insurance          301!
+/Jay_Murlidhar_group_Site/other-insurance.html   /insurance          301!
+/Jay_Murlidhar_group_Site/investment.html        /business-services  301!
+/Jay_Murlidhar_group_Site/index.html             /                   301!
+/Jay_Murlidhar_group_Site/*                      /                   301!
+/jay_murlidhar_group_site/*                      /                   301!
+
+# SPA Catch-all Fallback
+/*                                               /index.html         200

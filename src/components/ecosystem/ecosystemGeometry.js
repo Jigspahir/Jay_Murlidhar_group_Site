@@ -1,12 +1,13 @@
 /*
- * JMG ECOSYSTEM — 5-DOMAIN COLLISION-AWARE GEOMETRY ENGINE & SOURCE OF TRUTH
- * Canonical Angle Convention (5 Domains, clockwise, 0° = RIGHT, 90° = BOTTOM, 180° = LEFT, 270° = TOP):
- *   01 TECHNOLOGY          270° (TOP)
- *   02 INSURANCE           342° (TOP-RIGHT)
- *   03 BUSINESS SERVICES   54°  (BOTTOM-RIGHT)
- *   04 TRAVEL              126° (BOTTOM-LEFT)
- *   05 RETAIL              198° (TOP-LEFT)
- * Center: (500, 500)
+ * JMG ECOSYSTEM — 6-DOMAIN COLLISION-AWARE GEOMETRY ENGINE & SOURCE OF TRUTH
+ * Balanced Hexagonal Angle Convention (6 Domains evenly spaced at 60° increments, 0° = RIGHT, 180° = LEFT):
+ *   01 TECHNOLOGY          180° (LEFT)
+ *   02 JAN SUVIDHA         240° (UPPER-LEFT)
+ *   03 INSURANCE           300° (UPPER-RIGHT)
+ *   04 BUSINESS SERVICES   0°   (RIGHT)
+ *   05 TRAVEL              60°  (LOWER-RIGHT)
+ *   06 RETAIL              120° (LOWER-LEFT)
+ * Center: (500, 500) — No node at 12 o'clock (270°) or 6 o'clock (90°)
  */
 
 export const CENTER_X = 500;
@@ -23,11 +24,12 @@ export const DOMAIN_GAP = 16;
  * Participating in collision geometry calculations.
  */
 export const DEFAULT_PILL_DIMENSIONS = {
-  'technology': { width: 300, height: 74 },
-  'insurance': { width: 270, height: 74 },
-  'business-services': { width: 370, height: 74 },
-  'travel': { width: 240, height: 74 },
-  'retail': { width: 240, height: 74 },
+  'technology': { width: 250, height: 70 },
+  'jan-suvidha': { width: 260, height: 70 },
+  'insurance': { width: 240, height: 70 },
+  'business-services': { width: 280, height: 70 },
+  'travel': { width: 230, height: 70 },
+  'retail': { width: 230, height: 70 },
 };
 
 /**
@@ -179,100 +181,17 @@ export function solveCollisionSafeRadius({
   const centerX = ecosystemSize / 2;
   const centerY = ecosystemSize / 2;
 
-  // Step 1: Initialize at baseRadius, bounded by Core clearance and Container boundaries
+  // Enforce equal radial distance from JMG Core for all 6 nodes (as required by specification)
   for (const d of domains) {
-    const dim = pillDimensions[d.id] || { width: 200, height: 62 };
-    const minSafe = getMinimumSafeRadius({
-      coreRadius,
-      coreHalfWidth,
-      coreHalfHeight,
-      pillWidth: dim.width,
-      pillHeight: dim.height,
-      angle: d.angle,
-      coreToPillGap,
-    });
-    const maxSafe = getMaximumSafeRadius({
-      ecosystemSize,
-      containerPadding,
-      centerX,
-      centerY,
-      pillWidth: dim.width,
-      pillHeight: dim.height,
-      angle: d.angle,
-    });
-
-    let r = baseRadius;
-    if (r < minSafe) {
-      r = minSafe;
-      isAdjusted[d.id] = true;
-    } else if (r > maxSafe) {
-      r = maxSafe;
-      isAdjusted[d.id] = true;
-    } else {
-      isAdjusted[d.id] = false;
-    }
-
-    domainRadii[d.id] = Math.round(r * 10) / 10;
-  }
-
-  // Step 2: Pill-to-Pill pair collision check & minimal radial resolution along canonical angles
-  const maxIterations = 8;
-  let iteration = 0;
-  let hasOverlap = true;
-
-  while (hasOverlap && iteration < maxIterations) {
-    hasOverlap = false;
-    iteration++;
-
-    const bounds = domains.map((d) => {
-      const r = domainRadii[d.id];
-      const rad = (d.angle * Math.PI) / 180;
-      const x = centerX + r * Math.cos(rad);
-      const y = centerY + r * Math.sin(rad);
-      const dim = pillDimensions[d.id] || { width: 200, height: 62 };
-      return {
-        id: d.id,
-        angle: d.angle,
-        dim,
-        left: x - dim.width / 2,
-        right: x + dim.width / 2,
-        top: y - dim.height / 2,
-        bottom: y + dim.height / 2,
-      };
-    });
-
-    for (let i = 0; i < domains.length; i++) {
-      for (let j = i + 1; j < domains.length; j++) {
-        if (rectsOverlap(bounds[i], bounds[j], 8)) {
-          hasOverlap = true;
-          const d1 = domains[i];
-          const d2 = domains[j];
-          const maxSafe1 = getMaximumSafeRadius({ ecosystemSize, containerPadding, centerX, centerY, pillWidth: bounds[i].dim.width, pillHeight: bounds[i].dim.height, angle: d1.angle });
-          const maxSafe2 = getMaximumSafeRadius({ ecosystemSize, containerPadding, centerX, centerY, pillWidth: bounds[j].dim.width, pillHeight: bounds[j].dim.height, angle: d2.angle });
-
-          if (domainRadii[d2.id] + 8 <= maxSafe2) {
-            domainRadii[d2.id] = Math.round((domainRadii[d2.id] + 8) * 10) / 10;
-            isAdjusted[d2.id] = true;
-          } else if (domainRadii[d1.id] + 8 <= maxSafe1) {
-            domainRadii[d1.id] = Math.round((domainRadii[d1.id] + 8) * 10) / 10;
-            isAdjusted[d1.id] = true;
-          }
-        }
-      }
-    }
-  }
-
-  // Step 3: Compute total displacement from baseRadius
-  let totalDisplacement = 0;
-  for (const d of domains) {
-    totalDisplacement += Math.abs(domainRadii[d.id] - baseRadius);
+    domainRadii[d.id] = baseRadius;
+    isAdjusted[d.id] = false;
   }
 
   return {
     baseRadius,
     domainRadii,
     isAdjusted,
-    totalDisplacement,
+    totalDisplacement: 0,
   };
 }
 
@@ -388,6 +307,15 @@ export function getDomainEndRadius(
  * Calculates line endpoints, midpoint, Euclidean length, and atan2 rotation.
  * Starts cleanly at Core boundary and ends before entering the domain pill.
  */
+export function getLogoStartRadius(angle) {
+  const radians = (angle * Math.PI) / 180;
+  const isHorizontal = Math.abs(Math.sin(radians)) < 0.05;
+  if (isHorizontal) {
+    return 138;
+  }
+  return 112;
+}
+
 export function getRadialLineGeometry({
   centerX = CENTER_X,
   centerY = CENTER_Y,
@@ -433,28 +361,45 @@ export const ECOSYSTEM_DOMAINS = [
     shortName: "TECH",
     domainRoute: "/technology",
     route: "/technology",
-    angle: 270, // TOP
+    angle: 180, // LEFT
     accent: "#38BDF8",
     glowColor: "rgba(56, 189, 248, 0.28)",
     label: "Technology & Digital",
-    tagline: "Custom enterprise software, campus ERPs & hardware engineering",
-    description: "Engineering resilient digital platforms, academic ERP platforms, workstation diagnostic setups, and cloud systems.",
+    tagline: "Custom enterprise software, campus ERPs & modern digital engineering",
+    description: "Engineering resilient digital platforms, academic ERP platforms, scalable cloud infrastructure, and intelligent digital systems.",
     companies: [
-      { name: "Jay Murlidhar Computer", path: "/technology/jay-murlidhar-computer", role: "Hardware & IT Infrastructure" },
-      { name: "Jay Murlidhar Tech Solutions", path: "/technology/jay-murlidhar-tech-solutions", role: "Software & Campus ERP" },
+      { name: "Jay Murlidhar Tech Solutions", path: "/technology/jay-murlidhar-tech-solutions", role: "Software & Digital Engineering" },
     ],
-    capabilities: ["Campus ERP Systems", "Cloud Software", "Workstations & Networking", "Digital Solutions"],
+    capabilities: ["Campus ERP Systems", "Cloud Software", "Custom Web Platforms", "Super Intelligence (SI)"],
   },
   {
     number: "02",
+    name: "JAN SUVIDHA",
+    id: "jan-suvidha",
+    shortName: "JAN SUVIDHA",
+    domainRoute: "/jan-suvidha",
+    route: "/jan-suvidha",
+    angle: 240, // UPPER-LEFT
+    accent: "#10B981",
+    glowColor: "rgba(16, 185, 129, 0.28)",
+    label: "Citizen & Public Services",
+    tagline: "A trusted local service centre helping people access essential digital, government and citizen services.",
+    description: "A trusted local service centre helping people access essential digital, government and citizen services.",
+    companies: [
+      { name: "Jay Murlidhar Computer", path: "/jan-suvidha/jay-murlidhar-computer", role: "CSC & Jan Suvidha Kendra" },
+    ],
+    capabilities: ["RTO Services", "CSC & Business Services", "Business Registration", "Academy"],
+  },
+  {
+    number: "03",
     name: "INSURANCE",
     id: "insurance",
     shortName: "INSURE",
     domainRoute: "/insurance",
     route: "/insurance",
-    angle: 342, // TOP-RIGHT (72° clockwise from 270°)
-    accent: "#10B981",
-    glowColor: "rgba(16, 185, 129, 0.18)",
+    angle: 300, // UPPER-RIGHT
+    accent: "#06B6D4",
+    glowColor: "rgba(6, 182, 212, 0.18)",
     label: "Risk & Underwriting",
     tagline: "Institutional risk mitigation, general & life protection",
     description: "Corporate underwriting, academic campus liability coverage, asset risk consulting, and comprehensive health plans.",
@@ -464,15 +409,15 @@ export const ECOSYSTEM_DOMAINS = [
     capabilities: ["Asset Protection", "Institutional Underwriting", "Corporate Health", "Policy Advisory"],
   },
   {
-    number: "03",
+    number: "04",
     name: "BUSINESS SERVICES",
     id: "business-services",
     shortName: "BIZ SERVICES",
     domainRoute: "/business-services",
     route: "/business-services",
-    angle: 54, // BOTTOM-RIGHT (72° clockwise from 342°)
-    accent: "#EC4899",
-    glowColor: "rgba(236, 72, 153, 0.18)",
+    angle: 0, // RIGHT
+    accent: "#F97316",
+    glowColor: "rgba(249, 115, 22, 0.18)",
     label: "Corporate Operations",
     tagline: "Regulatory compliance, workflow automation & consulting",
     description: "Corporate certifications, tax advisory, statutory compliance, licensing, and day-to-day organizational workflow setups.",
@@ -482,13 +427,13 @@ export const ECOSYSTEM_DOMAINS = [
     capabilities: ["Regulatory Filing", "Entity Setup", "Operational Workflows", "Audits & Certifications"],
   },
   {
-    number: "04",
+    number: "05",
     name: "TRAVEL",
     id: "travel",
     shortName: "TRAVEL",
     domainRoute: "/travel",
     route: "/travel",
-    angle: 126, // BOTTOM-LEFT (72° clockwise from 54°)
+    angle: 60, // LOWER-RIGHT
     accent: "#F59E0B",
     glowColor: "rgba(245, 158, 11, 0.18)",
     label: "Tours & Logistics",
@@ -500,15 +445,15 @@ export const ECOSYSTEM_DOMAINS = [
     capabilities: ["Academic Study Tours", "Corporate Delegations", "Logistics Management", "Custom Itineraries"],
   },
   {
-    number: "05",
+    number: "06",
     name: "RETAIL",
     id: "retail",
     shortName: "RETAIL",
     domainRoute: "/retail",
     route: "/retail",
-    angle: 198, // TOP-LEFT (72° clockwise from 126°)
-    accent: "#8B5CF6",
-    glowColor: "rgba(139, 92, 246, 0.18)",
+    angle: 120, // LOWER-LEFT
+    accent: "#EC4899",
+    glowColor: "rgba(236, 72, 153, 0.18)",
     label: "Hardware & Accessories",
     tagline: "Smart consumer devices, student gear & mobility essentials",
     description: "Authentic mobile hardware, institutional tablet procurement, accessories, and certified electronics servicing.",
@@ -519,7 +464,7 @@ export const ECOSYSTEM_DOMAINS = [
   },
 ];
 
-// Pre-computed default collision-safe radius
-export const BASE_RADIUS = 350;
+// Uniform mathematically balanced radius for all six domains
+export const BASE_RADIUS = 320;
 export const ORBIT_RADIUS = BASE_RADIUS;
-export const MIDDLE_RADIUS = 230;
+export const MIDDLE_RADIUS = 215;

@@ -39,7 +39,7 @@ export default function NextGeneration() {
             <span className="text-[#CBD5E1]">HUMAN-CENTERED DESIGN</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#F8FAFC] tracking-[-0.03em] leading-[1.08] mb-6">
+          <h2 className="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#F8FAFC] tracking-[-0.03em] leading-[1.08] mb-6 break-words">
             BUILT FOR THE<br />
             NEXT GENERATION.
           </h2>

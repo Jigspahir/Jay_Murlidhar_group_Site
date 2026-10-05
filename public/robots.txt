@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /*.html$
+
+Sitemap: https://jaymurlidhargroup.co.in/sitemap.xml

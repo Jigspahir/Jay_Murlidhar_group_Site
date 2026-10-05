@@ -10,12 +10,6 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
   const { domain, slug } = useParams();
   const location = useLocation();
 
-  // 1. Check centralized redirect rule for this path first (preserves query params)
-  const redirectInfo = resolveRedirect(location.pathname);
-  if (redirectInfo) {
-    return <Navigate to={`${redirectInfo.target}${location.search}`} replace />;
-  }
-
   // Determine target slug: companySlug prop, or :slug param, or :domain param
   const targetSlug = companySlug || slug || domain;
 
@@ -29,6 +23,12 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [targetSlug, domain]);
+
+  // 1. Check centralized redirect rule for this path first (preserves query params)
+  const redirectInfo = resolveRedirect(location.pathname);
+  if (redirectInfo) {
+    return <Navigate to={`${redirectInfo.target}${location.search}`} replace />;
+  }
 
   // If company not found, or if domain was provided in path and does NOT match company domain
   // e.g. /technology/jay-murlidhar-business-services redirects; an unknown company shows 404.
@@ -98,7 +98,7 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
               <span className="text-[#1E293B]">{company.category}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-4">
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-4 break-words">
               {company.name}
             </h1>
 
@@ -147,15 +147,19 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
               <img
                 src={company.image}
                 alt={company.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="font-mono text-xs uppercase tracking-wider text-blue-300 block mb-1">
-                  Operating Division
-                </span>
-                <div className="text-xl font-bold">{company.name}</div>
-              </div>
+              {company.id !== 'jay-murlidhar-insurance' && (
+                <>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <span className="font-mono text-xs uppercase tracking-wider text-blue-300 block mb-1">
+                      Operating Division
+                    </span>
+                    <div className="text-xl font-bold">{company.name}</div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

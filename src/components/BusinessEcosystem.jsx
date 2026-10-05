@@ -8,27 +8,39 @@ const ECOSYSTEM_ITEMS = [
     name: 'TECHNOLOGY',
     category: 'Digital Systems & Engineering',
     tagline: 'Custom enterprise software, campus ERPs & hardware engineering',
-    description: 'High-availability web platforms, custom enterprise software, academic ERP suites, and comprehensive hardware engineering.',
+    description: 'High-availability web platforms, custom enterprise software, academic ERP suites, and comprehensive software solutions.',
     accent: '#2563EB',
     image: '/assets/hero.jpg',
-    tags: ['Campus ERP', 'Cloud Backends', 'Hardware AMC', 'Web Platforms'],
-    companies: ['Jay Murlidhar Computer', 'Jay Murlidhar Tech Solutions'],
+    tags: ['Web Platforms', 'Custom Software', 'Mobile Apps', 'Super Intelligence'],
+    companies: ['Jay Murlidhar Tech Solutions'],
     slug: '/technology'
   },
   {
     number: '02',
+    name: 'JAN SUVIDHA',
+    category: 'Citizen & Public Services',
+    tagline: 'CSC / Jan Suvidha Kendra, public digital services & citizen assistance',
+    description: 'A trusted local service centre helping people access essential digital, government and citizen services.',
+    accent: '#10B981',
+    image: '/assets/hero.jpg',
+    tags: ['RTO Services', 'CSC & Citizen Services', 'Business Registration', 'Academy'],
+    companies: ['Jay Murlidhar Computer'],
+    slug: '/jan-suvidha'
+  },
+  {
+    number: '03',
     name: 'INSURANCE',
     category: 'Risk Mitigation & Underwriting',
     tagline: 'Institutional risk mitigation, general & life protection',
     description: 'Comprehensive general, corporate, and individual insurance consulting designed to safeguard operational assets and personnel.',
     accent: '#0284C7',
-    image: '/assets/HERO2.jpg',
+    image: '/assets/jay-murlidhar-insurance-card.png',
     tags: ['Corporate Risk', 'Campus Liability', 'Asset Protection', 'Health Plans'],
     companies: ['Jay Murlidhar Insurance'],
     slug: '/insurance'
   },
   {
-    number: '03',
+    number: '04',
     name: 'BUSINESS SERVICES',
     category: 'Corporate Operations & Compliance',
     tagline: 'Regulatory compliance, workflow automation & consulting',
@@ -40,7 +52,7 @@ const ECOSYSTEM_ITEMS = [
     slug: '/business-services'
   },
   {
-    number: '04',
+    number: '05',
     name: 'TRAVEL',
     category: 'Corporate & Educational Mobility',
     tagline: 'Educational study tours & corporate travel operations',
@@ -52,7 +64,7 @@ const ECOSYSTEM_ITEMS = [
     slug: '/travel'
   },
   {
-    number: '05',
+    number: '06',
     name: 'RETAIL',
     category: 'Smart Hardware & Tech Essentials',
     tagline: 'Smart consumer devices, student gear & mobility essentials',
@@ -144,17 +156,19 @@ export default function BusinessEcosystem() {
           </div>
 
           {/* Right: Dynamic Live Preview Area */}
-          <div className="lg:col-span-5 sticky top-28">
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
             <div className="border border-[#E2E8F0] rounded-[16px] bg-white overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
               
               {/* Preview Image */}
               <div className="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-[#E2E8F0]">
                 <img
                   src={activeItem.image}
-                  alt={activeItem.name}
-                  className="w-full h-full object-cover transition-opacity duration-300"
+                  alt={activeItem.name === 'INSURANCE' ? 'Jay Murlidhar Insurance' : activeItem.name}
+                  className="w-full h-full object-cover object-center transition-opacity duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/70 via-transparent to-transparent" />
+                {activeItem.name !== 'INSURANCE' && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/70 via-transparent to-transparent" />
+                )}
                 <div className="absolute top-4 left-4">
                   <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-white text-[#111827] shadow-sm">
                     {activeItem.number} &bull; Sector Overview

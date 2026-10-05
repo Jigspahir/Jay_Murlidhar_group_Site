@@ -167,11 +167,11 @@ export default function About() {
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Our Operating Domains</h2>
             </div>
             <Link to="/ecosystem" className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-4 md:mt-0">
-              View All 5 Domains <ArrowRight className="w-4 h-4" />
+              View All 6 Domains <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
             {JMG_DOMAINS.map((domain) => (
               <Link
                 key={domain.id}
@@ -179,7 +179,7 @@ export default function About() {
                 className="bg-white p-6 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all group"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold text-slate-400">0{domain.number}</span>
+                  <span className="text-xs font-mono font-bold text-slate-400">{domain.number}</span>
                   <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: domain.accentColor }} />
                 </div>
                 <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">

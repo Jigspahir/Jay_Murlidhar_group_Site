@@ -8,18 +8,17 @@
  * JAY MURLIDHAR GROUP
  * │
  * ├── TECHNOLOGY
- * │   │
- * │   ├── Jay Murlidhar Computer
- * │   │   ├── RTO SERVICES (5)
- * │   │   ├── CSC & BUSINESS SERVICES (13)
- * │   │   ├── BUSINESS REGISTRATION (5)
- * │   │   └── ACADEMY (7) [Tagline: "Learn. Build. Grow."]
- * │   │
  * │   └── Jay Murlidhar Tech Solutions
  * │       └── TECHNOLOGY SERVICES (12)
  * │
+ * ├── JAN SUVIDHA
+ * │   └── Jay Murlidhar Computer
+ * │       ├── RTO SERVICES (5)
+ * │       ├── CSC & BUSINESS SERVICES (13)
+ * │       ├── BUSINESS REGISTRATION (5)
+ * │       └── ACADEMY (7) [Tagline: "Learn. Build. Grow."]
+ * │
  * └── INSURANCE
- *     │
  *     └── Jay Murlidhar Insurance
  *         └── INSURANCE SERVICES (15)
  * 
@@ -123,15 +122,15 @@ export const JMG_SERVICES = [
     title: "RTO Services",
     subtitle: "Vehicle Registration, Ownership Transfer & Licensing",
     companyName: "Jay Murlidhar Computer",
-    companyRoute: "/technology/jay-murlidhar-computer",
-    domainId: "technology",
-    domainName: "Technology & Digital",
-    domainRoute: "/technology",
+    companyRoute: "/jan-suvidha/jay-murlidhar-computer",
+    domainId: "jan-suvidha",
+    domainName: "Jan Suvidha",
+    domainRoute: "/jan-suvidha",
     description: "Complete RTO services including vehicle registration, ownership transfer, driving license assistance, and online documentation with fast and reliable support.",
     items: RTO_SERVICES,
     logo: "/assets/jay-murlidhar-computer-logo-jpg.jpg",
-    accent: "#2563EB",
-    exploreRoute: "/technology/jay-murlidhar-computer"
+    accent: "#10B981",
+    exploreRoute: "/jan-suvidha/jay-murlidhar-computer"
   },
   {
     id: "csc-business-services",
@@ -140,15 +139,15 @@ export const JMG_SERVICES = [
     title: "CSC & Business Services",
     subtitle: "Government Filings, Licensing & Citizen Support",
     companyName: "Jay Murlidhar Computer",
-    companyRoute: "/technology/jay-murlidhar-computer",
-    domainId: "technology",
-    domainName: "Technology & Digital",
-    domainRoute: "/technology",
+    companyRoute: "/jan-suvidha/jay-murlidhar-computer",
+    domainId: "jan-suvidha",
+    domainName: "Jan Suvidha",
+    domainRoute: "/jan-suvidha",
     description: "End-to-end business solutions with GST registration & filing, MSME registration, Shop Act license, FSSAI registration, and expert support for smooth operations.",
     items: CSC_BUSINESS_SERVICES,
     logo: "/assets/jay-murlidhar-computer-logo-jpg.jpg",
-    accent: "#2563EB",
-    exploreRoute: "/technology/jay-murlidhar-computer"
+    accent: "#10B981",
+    exploreRoute: "/jan-suvidha/jay-murlidhar-computer"
   },
   {
     id: "business-registration",
@@ -157,15 +156,15 @@ export const JMG_SERVICES = [
     title: "Business Registration",
     subtitle: "GST, MSME, Shop Act & FSSAI Business Documentation",
     companyName: "Jay Murlidhar Computer",
-    companyRoute: "/technology/jay-murlidhar-computer",
-    domainId: "technology",
-    domainName: "Technology & Digital",
-    domainRoute: "/technology",
+    companyRoute: "/jan-suvidha/jay-murlidhar-computer",
+    domainId: "jan-suvidha",
+    domainName: "Jan Suvidha",
+    domainRoute: "/jan-suvidha",
     description: "Official business registration support including GST, MSME, Shop Act, FSSAI certification, and commercial documentation.",
     items: BUSINESS_REGISTRATION_SERVICES,
     logo: "/assets/jay-murlidhar-computer-logo-jpg.jpg",
-    accent: "#2563EB",
-    exploreRoute: "/technology/jay-murlidhar-computer"
+    accent: "#10B981",
+    exploreRoute: "/jan-suvidha/jay-murlidhar-computer"
   },
   {
     id: "academy",
@@ -175,15 +174,15 @@ export const JMG_SERVICES = [
     subtitle: "Computer, Tally, IT & Professional Training",
     tagline: "Learn. Build. Grow.",
     companyName: "Jay Murlidhar Computer",
-    companyRoute: "/technology/jay-murlidhar-computer",
-    domainId: "technology",
-    domainName: "Technology & Digital",
-    domainRoute: "/technology",
+    companyRoute: "/jan-suvidha/jay-murlidhar-computer",
+    domainId: "jan-suvidha",
+    domainName: "Jan Suvidha",
+    domainRoute: "/jan-suvidha",
     description: "Practical computer education, IT training, and skill development programs tailored for students, job aspirants, and local entrepreneurs.",
     items: ACADEMY_SERVICES,
     logo: "/assets/jay-murlidhar-computer-logo-jpg.jpg",
-    accent: "#2563EB",
-    exploreRoute: "/technology/jay-murlidhar-computer"
+    accent: "#10B981",
+    exploreRoute: "/jan-suvidha/jay-murlidhar-computer"
   },
   {
     id: "technology-services",

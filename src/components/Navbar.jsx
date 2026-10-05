@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, ShieldCheck } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { JMG_CATEGORIES, JMG_COMPANIES, getCompanyById } from '../data/jmgEcosystem';
+import { JMGDomainGlyph } from './ecosystem/glyphs';
 
 export default function Navbar({ onOpenContact }) {
   const [scrolled, setScrolled] = useState(false);
@@ -31,11 +32,22 @@ export default function Navbar({ onOpenContact }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close menus on route change
+  // Close menus on route change or Escape key
   useEffect(() => {
     setEcosystemDropdownOpen(false);
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setEcosystemDropdownOpen(false);
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -75,7 +87,7 @@ export default function Navbar({ onOpenContact }) {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
             <Link
               to="/about"
               className={`text-sm font-medium transition-colors py-1 ${
@@ -113,7 +125,7 @@ export default function Navbar({ onOpenContact }) {
 
               {/* Clean Structured Mega-Menu (Not Overly Large) */}
               {ecosystemDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[780px] pt-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[880px] max-w-[calc(100vw-48px)] pt-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   <div className="bg-white border border-[#E2E8F0] rounded-[16px] shadow-[0_12px_36px_rgba(0,0,0,0.08)] overflow-hidden p-6 text-[#111827]">
                     
                     {/* Top Header of Menu */}
@@ -135,8 +147,8 @@ export default function Navbar({ onOpenContact }) {
                       </Link>
                     </div>
 
-                    {/* 5 Grouped Columns */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    {/* 6 Grouped Columns */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                       {JMG_CATEGORIES.map((cat) => {
                         const companies = cat.companyIds
                           .map((id) => getCompanyById(id))
@@ -146,8 +158,19 @@ export default function Navbar({ onOpenContact }) {
                           <div key={cat.id} className="space-y-2">
                             <Link 
                               to={cat.domainRoute} 
-                              className="flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#111827] hover:text-[#2563EB] pb-1 border-b border-[#E2E8F0]/70 transition-colors"
+                              className="flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#111827] hover:text-[#2563EB] pb-1.5 border-b border-[#E2E8F0]/70 transition-colors group"
                             >
+                              <div 
+                                className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 border"
+                                style={{
+                                  backgroundColor: `${cat.accent || '#2563EB'}0F`,
+                                  borderColor: `${cat.accent || '#2563EB'}30`,
+                                  color: cat.accent || '#2563EB'
+                                }}
+                                aria-hidden="true"
+                              >
+                                <JMGDomainGlyph domainId={cat.id} className="w-3.5 h-3.5" />
+                              </div>
                               <span className="text-[#2563EB]">{cat.number}</span>
                               <span className="text-[#94A3B8]">&mdash;</span>
                               <span className="tracking-wider truncate">{cat.shortName}</span>
@@ -247,19 +270,40 @@ export default function Navbar({ onOpenContact }) {
             </Link>
           </nav>
 
-          {/* Right Action */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={onOpenContact}
-              className={`hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-[10px] text-xs sm:text-sm font-medium transition-colors duration-200 ${
-                isLightHeader
-                  ? 'bg-[#111827] hover:bg-[#2563EB] text-white'
-                  : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
-              }`}
-            >
-              <span>Let's Talk</span>
-              <ArrowRight className="w-3.5 h-3.5 text-blue-200" />
-            </button>
+          {/* Right Action Area */}
+          <div className="flex items-center gap-3 sm:gap-4 w-fit shrink-0">
+            {/* Compact Right Action Group: Let's Talk + Shield (20px gap) */}
+            <div className="hidden sm:flex items-center gap-5 w-fit shrink-0">
+              <button
+                onClick={onOpenContact}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-[10px] text-xs sm:text-sm font-medium transition-colors duration-200 ${
+                  isLightHeader
+                    ? 'bg-[#111827] hover:bg-[#2563EB] text-white'
+                    : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
+                }`}
+              >
+                <span>Let's Talk</span>
+                <ArrowRight className="w-3.5 h-3.5 text-blue-200" />
+              </button>
+
+              {/* Discreet Secure Access / Admin Portal Icon */}
+              <div className="relative group/access flex items-center">
+                <Link
+                  to="/admin/login"
+                  aria-label="Secure Access"
+                  title="Secure Access"
+                  className="flex items-center justify-center p-2 rounded-md text-[#64748B] hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:text-[#111827] transition-colors duration-150"
+                >
+                  <ShieldCheck className="w-[19px] h-[19px]" aria-hidden="true" />
+                </Link>
+                <div className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-1 hidden group-hover/access:flex group-focus-within/access:flex flex-col items-center z-50 animate-in fade-in duration-150">
+                  <span className="w-1.5 h-1.5 -mb-0.5 rotate-45 bg-[#0F172A]"></span>
+                  <span className="whitespace-nowrap px-2 py-1 text-[11px] font-medium text-white bg-[#0F172A] rounded shadow-md">
+                    Secure Access
+                  </span>
+                </div>
+              </div>
+            </div>
 
             {/* Mobile Menu Button (Min 44px touch target) */}
             <button
@@ -278,9 +322,9 @@ export default function Navbar({ onOpenContact }) {
 
       {/* Clean Full-Screen Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#FAFAFA] flex flex-col justify-between p-6 sm:p-8 overflow-y-auto animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 bg-[#FAFAFA] flex flex-col justify-between p-5 sm:p-8 overflow-y-auto animate-in fade-in duration-200">
           <div>
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-5 mb-6">
+            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4 mb-5">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
                 <img 
                   src="/assets/jay-murlidhar-group-logo.png" 
@@ -298,11 +342,11 @@ export default function Navbar({ onOpenContact }) {
             </div>
 
             {/* Mobile Nav Links */}
-            <nav className="space-y-4">
+            <nav className="space-y-3">
               <Link
                 to="/about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2"
+                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
               >
                 About
               </Link>
@@ -313,13 +357,14 @@ export default function Navbar({ onOpenContact }) {
                   <Link
                     to="/ecosystem"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-xl font-bold text-[#2563EB]"
+                    className="text-xl font-bold text-[#2563EB] flex items-center min-h-[44px]"
                   >
-                    Ecosystem
+                    Ecosystem &amp; Services
                   </Link>
                   <button
                     onClick={() => setMobileEcosystemOpen(!mobileEcosystemOpen)}
-                    className="p-2 text-[#64748B]"
+                    className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[#64748B] hover:text-[#111827]"
+                    aria-label="Toggle Ecosystem Companies"
                   >
                     <ChevronDown className={`w-5 h-5 transition-transform ${mobileEcosystemOpen ? 'rotate-180' : ''}`} />
                   </button>
@@ -343,7 +388,7 @@ export default function Navbar({ onOpenContact }) {
                                 key={comp.id}
                                 to={comp.route || comp.path}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="block text-sm font-semibold text-[#111827] hover:text-[#2563EB] py-1"
+                                className="block text-sm font-semibold text-[#111827] hover:text-[#2563EB] py-1.5 min-h-[36px]"
                               >
                                 {comp.name}
                               </Link>
@@ -359,7 +404,7 @@ export default function Navbar({ onOpenContact }) {
               <Link
                 to="/solutions"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2"
+                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
               >
                 Solutions
               </Link>
@@ -367,7 +412,7 @@ export default function Navbar({ onOpenContact }) {
               <Link
                 to="/projects"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2"
+                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
               >
                 Projects
               </Link>
@@ -375,7 +420,7 @@ export default function Navbar({ onOpenContact }) {
               <Link
                 to="/careers"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2"
+                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
               >
                 Careers
               </Link>
@@ -383,22 +428,34 @@ export default function Navbar({ onOpenContact }) {
               <Link
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 text-left w-full"
+                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center text-left w-full"
               >
                 Contact
               </Link>
+
+              {/* Admin Panel & Secure Access Link with accessible text and touch target */}
+              <div className="pt-2 border-t border-[#E2E8F0]/80">
+                <Link
+                  to="/admin/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 text-base font-semibold text-[#64748B] hover:text-[#111827] py-2 min-h-[44px]"
+                >
+                  <ShieldCheck className="w-5 h-5 text-[#2563EB]" aria-hidden="true" />
+                  <span>Admin Portal / Secure Access</span>
+                </Link>
+              </div>
             </nav>
           </div>
 
-          <div className="pt-8 border-t border-[#E2E8F0] space-y-4">
+          <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenContact();
               }}
-              className="w-full min-h-[48px] py-3.5 rounded-[10px] bg-[#111827] text-white font-medium text-sm flex items-center justify-center gap-2"
+              className="w-full min-h-[48px] py-3.5 rounded-[10px] bg-[#111827] hover:bg-[#2563EB] active:bg-[#1E40AF] text-white font-medium text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
-              <span>Let's Talk</span>
+              <span>Let's Talk &bull; Get a Quote</span>
               <ArrowRight className="w-4 h-4 text-blue-300" />
             </button>
             <div className="text-center font-mono text-xs text-[#94A3B8]">

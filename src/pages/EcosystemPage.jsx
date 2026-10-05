@@ -35,13 +35,13 @@ export default function EcosystemPage({ onOpenContact }) {
             <span className="text-[#1E293B]">6 SPECIALIZED ENTITIES</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.05] mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-[64px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.05] mb-6 break-words">
             THE JAY MURLIDHAR GROUP<br />
             ECOSYSTEM.
           </h1>
 
           <p className="text-lg sm:text-xl text-[#64748B] leading-relaxed font-normal max-w-3xl">
-            One group connecting multiple businesses, services and opportunities. Explore our operating companies spanning technology, insurance, business services, travel, and retail.
+            One group connecting multiple businesses, services and opportunities. Explore our operating companies spanning technology, jan suvidha, insurance, business services, travel, and retail.
           </p>
         </div>
 
@@ -66,6 +66,8 @@ export default function EcosystemPage({ onOpenContact }) {
 
             <div className="hidden lg:flex items-center gap-3 text-xs font-mono text-[#64748B]">
               <span className="px-3 py-1.5 rounded-md bg-[#FAFAFA] border border-[#E2E8F0] text-[#111827]">Technology</span>
+              <span>&bull;</span>
+              <span className="px-3 py-1.5 rounded-md bg-[#FAFAFA] border border-[#E2E8F0] text-[#111827]">Jan Suvidha</span>
               <span>&bull;</span>
               <span className="px-3 py-1.5 rounded-md bg-[#FAFAFA] border border-[#E2E8F0] text-[#111827]">Insurance</span>
               <span>&bull;</span>
@@ -99,7 +101,7 @@ export default function EcosystemPage({ onOpenContact }) {
                 : 'bg-white text-[#64748B] hover:text-[#111827] border border-[#E2E8F0]'
             }`}
           >
-            All Domains (5)
+            All Domains (6)
           </button>
           {JMG_CATEGORIES.map((cat) => (
             <button
@@ -195,24 +197,34 @@ export default function EcosystemPage({ onOpenContact }) {
                   <img
                     src={hoveredCompany.image}
                     alt={hoveredCompany.name}
-                    className="w-full h-full object-cover transition-opacity duration-300"
+                    className="w-full h-full object-cover object-center transition-opacity duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/75 via-transparent to-transparent" />
-                  
-                  <div className="absolute top-4 left-4">
-                    <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-white text-[#111827] shadow-sm">
-                      {hoveredCompany.number} &bull; {hoveredCompany.category}
-                    </span>
-                  </div>
+                  {hoveredCompany.id !== 'jay-murlidhar-insurance' ? (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/75 via-transparent to-transparent" />
+                      
+                      <div className="absolute top-4 left-4">
+                        <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-white text-[#111827] shadow-sm">
+                          {hoveredCompany.number} &bull; {hoveredCompany.category}
+                        </span>
+                      </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <span className="font-mono text-xs text-blue-200 block mb-0.5">
-                      {hoveredCompany.subtitle}
-                    </span>
-                    <h4 className="text-xl font-bold">
-                      {hoveredCompany.name}
-                    </h4>
-                  </div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <span className="font-mono text-xs text-blue-200 block mb-0.5">
+                          {hoveredCompany.subtitle}
+                        </span>
+                        <h4 className="text-xl font-bold">
+                          {hoveredCompany.name}
+                        </h4>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="absolute top-4 left-4">
+                      <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-white text-[#111827] shadow-sm">
+                        {hoveredCompany.number} &bull; {hoveredCompany.category}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Body Details */}
@@ -270,9 +282,9 @@ export default function EcosystemPage({ onOpenContact }) {
 
         </div>
 
-        {/* ========================================================================= */}
-        {/* COLLABORATION INQUIRY CTA AT BOTTOM                                       */}
-        {/* ========================================================================= */}
+        
+        {/* COLLABORATION INQUIRY CTA AT BOTTOM */}
+        
         <div className="mt-24 pt-16 border-t border-[#E2E8F0]">
           <div className="max-w-2xl">
             <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#2563EB] block mb-3">

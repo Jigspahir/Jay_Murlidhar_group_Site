@@ -77,8 +77,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-slate-900">Principal Office</h3>
                     <p className="mt-1 leading-relaxed">
-                      Jay Murlidhar Complex, Near City Center,<br />
-                      Mahuva - 364290, Bhavnagar District,<br />
+                      Jay Murlidhar Group, Near Motibagh,<br />
+                      Junagadh - 362001, Junagadh District,<br />
                       Gujarat, India.
                     </p>
                   </div>
@@ -90,8 +90,13 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900">Direct Telephone</h3>
-                    <p className="mt-1">+91 94282 12345 / +91 2844 222333</p>
-                    <p className="text-xs text-slate-400 mt-0.5">Mon–Sat, 9:00 AM – 7:00 PM IST</p>
+                    <a
+                      href="tel:+919909461768"
+                      className="mt-1 block hover:text-blue-600 transition-colors"
+                    >
+                      +91 9909461768
+                    </a>
+                    <p className="text-xs text-slate-400 mt-0.5">Mon–Sat, 10:00 AM – 6:00 PM IST</p>
                   </div>
                 </div>
 
@@ -101,8 +106,12 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900">Email Enquiries</h3>
-                    <p className="mt-1">contact@jaymurlidhargroup.com</p>
-                    <p className="text-xs text-slate-400 mt-0.5">Enterprise &amp; Institutional desk</p>
+                    <a
+                      href="mailto:info.jaymurlidhargroup@gmail.com"
+                      className="mt-1 block hover:text-blue-600 transition-colors break-all sm:break-normal"
+                    >
+                      info.jaymurlidhargroup@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>

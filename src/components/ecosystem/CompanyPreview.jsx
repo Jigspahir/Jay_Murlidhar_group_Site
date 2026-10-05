@@ -66,21 +66,21 @@ export default function CompanyPreview({ currentCompany, activeDomain }) {
           {currentCompany.slug === 'jay-murlidhar-computer' && (
             <div className="space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-[11px] text-slate-400">
-                <span>HARDWARE LAB DIAGNOSTICS</span>
-                <span className="text-emerald-400">CALIBRATED</span>
+                <span>CITIZEN &amp; PUBLIC SERVICES</span>
+                <span className="text-emerald-400">ACTIVE &bull; VERIFIED</span>
               </div>
               <div className="space-y-1.5 text-slate-300">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">COMPONENT REPAIRS</span>
-                  <span className="text-[#38BDF8]">12,500+ Lifetime</span>
+                  <span className="text-slate-400">SERVICE CENTRE</span>
+                  <span className="text-[#10B981]">CSC / Jan Suvidha Kendra</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">INSTITUTIONAL AMCS</span>
-                  <span className="text-emerald-400">45 Active Campus Labs</span>
+                  <span className="text-slate-400">CORE SERVICES</span>
+                  <span className="text-slate-200">RTO, GST &amp; Licenses</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">SLA DISPATCH</span>
-                  <span className="text-emerald-400">&lt; 24h Turnaround</span>
+                  <span className="text-slate-400">CITIZENS SERVED</span>
+                  <span className="text-emerald-400">12,500+ Community</span>
                 </div>
               </div>
             </div>

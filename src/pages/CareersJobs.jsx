@@ -137,7 +137,7 @@ export default function CareersJobs() {
               <span>JMG ECOSYSTEM TALENT</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mb-4 break-words">
               CAREER OPPORTUNITIES.
             </h1>
 

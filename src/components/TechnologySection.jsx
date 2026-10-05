@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { ArrowRight, Terminal } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const TECH_ITEMS = [
   {
     id: 'web',
     title: 'WEB',
     fullName: 'Modern Web Engineering',
+    category: 'WEB',
     tagline: 'Modern web experiences and applications.',
+    summary: 'High-performance interactive web portals and scalable frontend architectures.',
     description: 'High-performance interactive web portals, scalable frontend architectures, and responsive web applications built with React, Next.js, and modern TypeScript.',
     deliverables: ['Sub-second page rendering', 'Full mobile responsive fidelity', 'Accessibility & SEO built-in'],
     metrics: 'Fast & Lightweight'
@@ -15,25 +17,37 @@ const TECH_ITEMS = [
     id: 'software',
     title: 'SOFTWARE',
     fullName: 'Enterprise Systems',
+    category: 'SOFTWARE',
     tagline: 'Reliable, modular software architectures.',
+    summary: 'Mission-critical enterprise engines and role-based workflows.',
     description: 'Core institutional engines and mission-critical enterprise systems designed for concurrent high-load processing, role-based workflows, and data consistency.',
     deliverables: ['Relational data models', 'Granular RBAC security', 'Fault-tolerant microservices'],
     metrics: 'Zero-downtime Deployments'
   },
   {
-    id: 'ai',
-    title: 'AI',
-    fullName: 'Intelligent Automation',
-    tagline: 'Intelligent automation and AI-powered experiences.',
-    description: 'Practical machine intelligence that classifies incoming documents, detects academic scheduling conflicts, and provides conversational student guidance.',
-    deliverables: ['Automated timetable optimization', 'Document verification parsing', 'Contextual student assistants'],
-    metrics: 'Practical & Grounded'
+    id: 'super-intelligence',
+    title: 'SUPER INTELLIGENCE',
+    fullName: 'Super Intelligence (SI)',
+    category: 'SUPER INTELLIGENCE',
+    tagline: 'Next-generation intelligent systems.',
+    summary: 'Next-generation intelligence, intelligent automation and AI-powered digital experiences.',
+    description: 'We explore intelligent systems that combine AI, automation, data and contextual reasoning to create more capable digital experiences and operational workflows.',
+    deliverables: [
+      'Intelligent automation',
+      'AI-powered applications',
+      'Intelligent agents',
+      'Data-driven decision systems',
+      'Context-aware digital experiences'
+    ],
+    metrics: 'Future Direction'
   },
   {
     id: 'cloud',
     title: 'CLOUD',
     fullName: 'Cloud Infrastructure',
+    category: 'CLOUD',
     tagline: 'Scalable digital infrastructure.',
+    summary: 'Elastic cloud backends, container orchestration and serverless pipelines.',
     description: 'Elastic cloud backends, container orchestration, encrypted multi-region database backups, and secure serverless computing pipelines.',
     deliverables: ['Automated CI/CD pipelines', 'Multi-zone database failover', 'End-to-end data encryption'],
     metrics: 'High Availability'
@@ -42,7 +56,9 @@ const TECH_ITEMS = [
     id: 'data',
     title: 'DATA',
     fullName: 'Analytics & Telemetry',
+    category: 'DATA',
     tagline: 'Real-time operational reporting.',
+    summary: 'Unified administrative metrics and live telemetry dashboards.',
     description: 'Unified administrative metrics, institutional fee reconciliation pipelines, live attendance telemetry, and exportable regulatory compliance summaries.',
     deliverables: ['Real-time telemetry dashboards', 'Instant CSV/PDF audit generation', 'Historical attendance radar'],
     metrics: 'Transparent Auditing'
@@ -51,7 +67,9 @@ const TECH_ITEMS = [
     id: 'automation',
     title: 'AUTOMATION',
     fullName: 'Workflow Engine',
+    category: 'AUTOMATION',
     tagline: 'Streamlined event-driven pipelines.',
+    summary: 'Eliminating manual administrative overhead through event triggers.',
     description: 'Eliminating manual administrative repetitive overhead through event-driven triggers, instant fee receipts, SMS/Email dispatches, and verification bots.',
     deliverables: ['Event-driven webhooks', 'Automated fee receipt generation', 'Instant hall ticket delivery'],
     metrics: '90% Less Clerical Overhead'
@@ -72,14 +90,28 @@ export default function TechnologySection() {
             <span className="text-[#94A3B8]">ENGINEERING PHILOSOPHY</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#F8FAFC] tracking-[-0.03em] leading-[1.08] mb-6">
+          <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#F8FAFC] tracking-[-0.03em] leading-[1.08] mb-6 break-words">
             TECHNOLOGY SHOULD<br />
             DISAPPEAR INTO THE EXPERIENCE.
           </h2>
 
-          <p className="text-base sm:text-lg text-[#CBD5E1] leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-[#CBD5E1] leading-relaxed font-normal mb-8">
             Technology should feel natural, useful and intuitive. We design digital systems that do heavy operational lifting behind the scenes without overwhelming users.
           </p>
+
+          {/* Section Introduction: Editorial Technology Statement */}
+          <div className="pt-6 border-t border-slate-800">
+            <div className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#60A5FA] mb-2 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#60A5FA]" />
+              <span>Technology Direction &bull; Super Intelligence (SI)</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-[#F8FAFC] tracking-tight mb-2">
+              FROM AI TO SUPER INTELLIGENCE.
+            </h3>
+            <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed max-w-2xl font-normal">
+              Technology is moving from software that assists people toward systems that can reason, adapt and act across complex digital workflows.
+            </p>
+          </div>
         </div>
 
         {/* Interactive Studio Split: Large Typographic List on Left, Live Studio Console on Right */}
@@ -94,21 +126,21 @@ export default function TechnologySection() {
                   key={item.id}
                   onMouseEnter={() => setActiveTech(item)}
                   onClick={() => setActiveTech(item)}
-                  className={`min-h-[52px] py-4 sm:py-6 cursor-pointer transition-all duration-150 flex items-center justify-between group ${
+                  className={`min-h-[52px] py-4 sm:py-5 cursor-pointer transition-all duration-150 flex items-center justify-between gap-3 group ${
                     isSelected ? 'pl-2 text-[#F8FAFC]' : 'text-[#64748B] hover:text-[#F8FAFC] hover:pl-2'
                   }`}
                 >
-                  <span className={`text-2xl sm:text-4xl font-semibold tracking-tight transition-colors ${
+                  <span className={`text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight transition-colors leading-tight ${
                     isSelected ? 'text-[#F8FAFC]' : 'text-[#64748B] group-hover:text-[#F8FAFC]'
                   }`}>
                     {item.title}
                   </span>
 
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-[#94A3B8] hidden sm:inline">
-                      {item.tagline}
+                  <div className="flex items-center gap-3 shrink-0">
+                    <span className="text-xs font-mono text-[#94A3B8] hidden xl:inline max-w-[220px] text-right truncate">
+                      {item.summary || item.tagline}
                     </span>
-                    <ArrowRight className={`w-5 h-5 transition-transform ${
+                    <ArrowRight className={`w-5 h-5 shrink-0 transition-transform ${
                       isSelected ? 'text-[#60A5FA] translate-x-1' : 'text-slate-700 group-hover:translate-x-1 group-hover:text-[#CBD5E1]'
                     }`} />
                   </div>
@@ -118,7 +150,7 @@ export default function TechnologySection() {
           </div>
 
           {/* Right: Technical Studio Console / Architecture Preview */}
-          <div className="lg:col-span-6 sticky top-28 w-full">
+          <div className="lg:col-span-6 lg:sticky lg:top-28 w-full">
             <div className="border border-slate-800 rounded-[16px] bg-slate-950 p-6 sm:p-8 shadow-2xl">
               
               {/* Studio Window Chrome */}
@@ -139,7 +171,7 @@ export default function TechnologySection() {
 
               {/* Dynamic Content Details */}
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#60A5FA] block mb-2">
-                {activeTech.fullName}
+                {activeTech.category || activeTech.fullName}
               </span>
 
               <h3 className="text-xl sm:text-2xl font-semibold text-[#F8FAFC] mb-3">

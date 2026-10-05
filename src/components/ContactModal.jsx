@@ -20,7 +20,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-content-primary/40 backdrop-blur-sm">
-      <div className="bg-white rounded-container max-w-lg w-full p-6 sm:p-8 border border-line-border shadow-modal relative">
+      <div className="bg-white rounded-container max-w-lg w-full p-5 sm:p-8 border border-line-border shadow-modal relative max-h-[92dvh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1.5 rounded-md hover:bg-surface-subtle text-content-secondary hover:text-content-primary transition-colors"

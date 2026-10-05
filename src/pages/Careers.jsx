@@ -13,6 +13,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import FinalCTA from '../components/FinalCTA';
+import HumanCenteredExperienceSection from '../components/HumanCenteredExperienceSection';
 
 export default function Careers() {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ export default function Careers() {
             </div>
 
             {/* Page Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-[#0B1220] tracking-[-0.03em] leading-[1.08] mb-5">
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[#0B1220] tracking-[-0.03em] leading-[1.08] mb-5 break-words">
               BUILD YOUR CAREER<br />
               WITH <span className="bg-gradient-to-r from-[#0099FF] via-[#06B6D4] to-[#D946EF] bg-clip-text text-transparent">JMG.</span>
             </h1>
@@ -292,13 +293,13 @@ export default function Careers() {
           
           <div className="max-w-2xl mb-12">
             <div className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#0284C7] mb-2">
-              PRACTICAL LEARNING ARCHITECTURE
+              ACADEMIC INNOVATION &bull; PRACTICAL LEARNING ARCHITECTURE
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1220] tracking-tight mb-4">
               THE JMG INTERNSHIP EXPERIENCE.
             </h2>
             <p className="text-base text-[#64748B] leading-relaxed">
-              We provide structured, verified industry internships that bridge academic learning with commercial engineering and operations.
+              Education, skills and digital learning experiences &mdash; structured, verified industry internships that bridge academic learning with commercial engineering and operations.
             </p>
           </div>
 
@@ -546,6 +547,9 @@ export default function Careers() {
 
         </div>
       </section>
+
+      {/* 05 HUMAN-CENTERED EXPERIENCE */}
+      <HumanCenteredExperienceSection />
 
       {/* 06 FINAL CTA SECTION */}
       <FinalCTA onOpenContact={onOpenContact} />

@@ -5,17 +5,13 @@ import { JMG_DOMAINS, JMG_COMPANIES, getDomainById, getCompanyBySlug } from '../
 import { resolveRedirect } from '../data/jmgRedirects';
 import { useCanonical } from '../utils/seo';
 import NotFoundPage from './NotFoundPage';
+import TechnologySection from '../components/TechnologySection';
+import { JMGDomainGlyph } from '../components/ecosystem/glyphs';
 
 export default function DomainDetailPage({ domainId: propDomainId, onOpenContact }) {
   const { domain: paramDomain } = useParams();
   const location = useLocation();
   const domainId = propDomainId || paramDomain;
-
-  // 1. Check centralized redirect rule for this path first (preserves query params)
-  const redirectInfo = resolveRedirect(location.pathname);
-  if (redirectInfo) {
-    return <Navigate to={`${redirectInfo.target}${location.search}`} replace />;
-  }
 
   // Resolve domain by id or domainRoute
   const domain = JMG_DOMAINS.find(
@@ -25,10 +21,40 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
   // Set canonical link for SEO
   useCanonical(domain?.domainRoute);
 
+  // Set page metadata for Technology domain
+  useEffect(() => {
+    if (domain?.id === 'technology') {
+      const prevTitle = document.title;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      const prevDesc = metaDesc ? metaDesc.getAttribute('content') : '';
+
+      document.title = "Super Intelligence & Digital Technology | Jay Murlidhar Group";
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          "Jay Murlidhar Group explores next-generation intelligence, intelligent automation, software, cloud and data-driven digital experiences."
+        );
+      }
+
+      return () => {
+        document.title = prevTitle;
+        if (metaDesc && prevDesc) {
+          metaDesc.setAttribute('content', prevDesc);
+        }
+      };
+    }
+  }, [domain?.id]);
+
   // Scroll to top on load or domain change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [domainId]);
+
+  // 1. Check centralized redirect rule for this path first (preserves query params)
+  const redirectInfo = resolveRedirect(location.pathname);
+  if (redirectInfo) {
+    return <Navigate to={`${redirectInfo.target}${location.search}`} replace />;
+  }
 
   if (!domain) {
     return <NotFoundPage domainHint={domainId} />;
@@ -61,7 +87,18 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
         {/* DOMAIN HEADER                                                             */}
         {/* ========================================================================= */}
         <div className="max-w-4xl mb-16 lg:mb-20">
-          <div className="flex items-center gap-2 mb-4 font-mono text-xs font-semibold uppercase tracking-[0.2em]">
+          <div className="flex items-center gap-2.5 mb-4 font-mono text-xs font-semibold uppercase tracking-[0.2em]">
+            <div 
+              className="w-7 h-7 rounded-lg flex items-center justify-center border"
+              style={{
+                backgroundColor: `${domain.accent}12`,
+                borderColor: `${domain.accent}30`,
+                color: domain.accent
+              }}
+              aria-hidden="true"
+            >
+              <JMGDomainGlyph domainId={domain.id} className="w-4 h-4" strokeWidth={1.85} />
+            </div>
             <span 
               className="px-2.5 py-0.5 rounded text-white font-mono text-[11px]"
               style={{ backgroundColor: domain.accent }}
@@ -72,7 +109,7 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
             <span className="text-[#1E293B]">{domain.shortCategory}</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6 break-words">
             {domain.categoryTitle || domain.name}
           </h1>
 
@@ -96,6 +133,16 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* ENGINEERING PHILOSOPHY SECTION (ONLY FOR TECHNOLOGY DOMAIN)               */}
+      {/* ========================================================================= */}
+      {domain.id === 'technology' && (
+        <TechnologySection />
+      )}
+
+      <div className={`max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 ${domain.id === 'technology' ? 'pt-14 sm:pt-16 lg:pt-20' : ''}`}>
 
         {/* ========================================================================= */}
         {/* OPERATING COMPANIES SECTION (CANONICAL DISPLAY)                           */}
@@ -253,6 +300,32 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
             ))}
           </div>
         </div>
+
+        {/* ========================================================================= */}
+        {/* RELEVANT TECHNOLOGY CTA                                                   */}
+        {/* ========================================================================= */}
+        {domain.id === 'technology' && (
+          <div className="mt-14 sm:mt-16 lg:mt-20 p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="max-w-xl">
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
+                Technology Inquiries
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight">
+                Architecting your next digital initiative?
+              </h3>
+              <p className="text-sm text-[#64748B] mt-1 leading-relaxed">
+                Connect directly with our engineering division to discuss modern web platforms, enterprise systems, and intelligent digital workflows.
+              </p>
+            </div>
+            <button
+              onClick={onOpenContact}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#111827] hover:bg-[#2563EB] text-white text-xs sm:text-sm font-semibold transition-all duration-200 flex-shrink-0"
+            >
+              <span>Contact Engineering Team</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
 
       </div>
     </div>

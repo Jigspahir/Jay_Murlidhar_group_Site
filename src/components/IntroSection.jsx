@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function IntroSection() {
   return (
-    <section id="about" className="py-12 sm:py-14 lg:py-16 bg-white border-b border-[#E2E8F0]">
+    <section id="about" className="pt-5 sm:pt-6 md:pt-7 lg:pt-9 xl:pt-10 pb-12 sm:pb-14 lg:pb-16 bg-white border-b border-[#E2E8F0]">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Full-Width Editorial Layout (NO CARDS) */}
@@ -16,7 +16,7 @@ export default function IntroSection() {
               <span className="text-[#1E293B]">WHO WE ARE</span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-[58px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-8">
+            <h2 className="text-3xl sm:text-5xl lg:text-[58px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6 sm:mb-8 break-words">
               ONE GROUP.<br />
               <span className="text-[#1E293B]">MULTIPLE POSSIBILITIES.</span>
             </h2>

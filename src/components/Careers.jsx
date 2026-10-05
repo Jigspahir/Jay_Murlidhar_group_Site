@@ -11,11 +11,11 @@ export default function Careers({ onOpenContact }) {
           
           <div className="lg:col-span-7">
             <div className="flex items-center gap-2 mb-6 font-mono text-xs font-semibold uppercase tracking-[0.2em]">
-              <span className="text-[#2563EB]">10 —</span>
+              <span className="text-[#2563EB]">08 &mdash;</span>
               <span className="text-[#1E293B]">TALENT &amp; CULTURE</span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6">
+            <h2 className="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-6 break-words">
               YOUR NEXT CHAPTER<br />
               STARTS HERE.
             </h2>
