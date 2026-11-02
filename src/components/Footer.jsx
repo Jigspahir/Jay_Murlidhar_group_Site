@@ -11,9 +11,9 @@ const FOOTER_SECTIONS = [
     ],
   },
   {
-    title: 'ECOSYSTEM',
+    title: 'OUR COMPANIES',
     links: [
-      { label: 'All Businesses', href: '/ecosystem' },
+      { label: 'All Companies', href: '/ecosystem' },
       { label: 'Technology', href: '/technology' },
       { label: 'Jan Suvidha', href: '/jan-suvidha' },
       { label: 'Insurance', href: '/insurance' },
@@ -34,6 +34,7 @@ const FOOTER_SECTIONS = [
     title: 'COMPANY',
     links: [
       { label: 'Careers', href: '/careers' },
+      { label: 'Academic Innovation', href: '/academic-innovation' },
       { label: 'Contact', href: '/contact', isContactAction: true },
       { label: 'Privacy Policy', href: '/#privacy' },
       { label: 'Terms & Conditions', href: '/#terms' },
@@ -159,8 +160,7 @@ export default function Footer({ onOpenContact }) {
 
             {/* Supporting Statement */}
             <p className="text-[13px] sm:text-[14px] text-[#64748B] font-normal leading-relaxed max-w-sm mb-4 sm:mb-5">
-              One Group.
-               One Ecosystem.
+              One Group. Multiple Companies.
             </p>
 
             {/* Social Media Channels */}

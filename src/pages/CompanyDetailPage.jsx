@@ -56,7 +56,7 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
         <div className="flex items-center gap-2 font-mono text-xs text-[#94A3B8] mb-8 flex-wrap">
           <Link to="/" className="hover:text-[#111827] transition-colors">JMG</Link>
           <span>/</span>
-          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Ecosystem</Link>
+          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Our Companies</Link>
           <span>/</span>
           <Link 
             to={company.domainRoute || `/${company.domain}`} 
@@ -173,7 +173,7 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
               ABOUT THE BUSINESS
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] mb-6">
-              Strategic Role in the JMG Ecosystem
+              Strategic Role in Jay Murlidhar Group
             </h2>
             <p className="text-base sm:text-lg text-[#64748B] leading-relaxed font-normal">
               {company.about}
@@ -356,7 +356,7 @@ export default function CompanyDetailPage({ companySlug, onOpenContact }) {
                   Connected Businesses
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-[#111827]">
-                  Related Entities in the JMG Ecosystem
+                  Related Entities in Jay Murlidhar Group
                 </h3>
               </div>
               <Link to="/ecosystem" className="text-xs font-semibold text-[#2563EB] hover:underline">

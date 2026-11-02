@@ -41,7 +41,7 @@ export default function FloatingDigitalInterface({ onCategoryHover }) {
               </span>
               <span className="text-white/40">&bull;</span>
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#38BDF8] font-semibold">
-                DIGITAL ECOSYSTEM
+                GROUP COMPANIES
               </span>
             </div>
             <span className="text-[11px] text-slate-400 font-mono">

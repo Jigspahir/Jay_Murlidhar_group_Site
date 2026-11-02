@@ -22,7 +22,7 @@ export default function IntroSection() {
             </h2>
 
             <p className="text-lg sm:text-xl text-[#64748B] leading-relaxed font-normal max-w-2xl mb-6">
-              Jay Murlidhar Group brings together education, technology and diverse business initiatives under one growing ecosystem.
+              Jay Murlidhar Group brings together education, technology and diverse business initiatives under one cohesive group of companies.
             </p>
 
             <p className="text-sm sm:text-base text-[#64748B] leading-relaxed font-normal max-w-2xl mb-10">
@@ -42,7 +42,7 @@ export default function IntroSection() {
           <div className="lg:col-span-5 pt-4">
             <div className="p-8 border border-[#E2E8F0] rounded-[16px] bg-[#FAFAFA]">
               <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#94A3B8] mb-6">
-                Ecosystem Architecture
+                Group Architecture
               </div>
 
               {/* Minimal Line Diagram showing convergence */}

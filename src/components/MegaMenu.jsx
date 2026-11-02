@@ -49,7 +49,7 @@ export default function MegaMenu({ isOpen, onClose, onSelectBusiness }) {
               OUR BUSINESSES
             </div>
             <h3 className="text-sm font-semibold text-slate-800">
-              Integrated Multi-Disciplinary Ecosystem
+              Integrated Multi-Disciplinary Group Companies
             </h3>
           </div>
           <a

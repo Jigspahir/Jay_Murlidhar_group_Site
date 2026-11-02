@@ -5,7 +5,7 @@ const NODES = [
   { id: 'education', name: 'Education', color: '#2563EB', desc: 'Institutional platforms & student portals', pos: [2.1, 1.1, 0.4] },
   { id: 'technology', name: 'Technology', color: '#7C3AED', desc: 'Modern web & resilient cloud systems', pos: [-2.1, 1.0, -0.3] },
   { id: 'innovation', name: 'Innovation', color: '#10B981', desc: 'Applied R&D & practical engineering', pos: [1.8, -1.3, -0.4] },
-  { id: 'business', name: 'Business', color: '#F97316', desc: 'Commercial services & trade ecosystem', pos: [-1.8, -1.2, 0.5] },
+  { id: 'business', name: 'Business', color: '#F97316', desc: 'Commercial services & business operations', pos: [-1.8, -1.2, 0.5] },
 ];
 
 export default function Hero3DEcosystem() {
@@ -244,7 +244,7 @@ export default function Hero3DEcosystem() {
               {activeNode.name} Node
             </span>
             <span className="font-mono text-[10px] text-[#64748B] uppercase tracking-wider">
-              Ecosystem Satellite
+              Group Entity
             </span>
           </div>
           <p className="text-xs text-[#64748B] font-normal leading-relaxed">

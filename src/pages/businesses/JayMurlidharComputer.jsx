@@ -126,7 +126,7 @@ export default function JayMurlidharComputer() {
         <div className="flex items-center gap-2 font-mono text-xs text-[#94A3B8] mb-8 flex-wrap">
           <Link to="/" className="hover:text-[#111827] transition-colors">JMG</Link>
           <span>/</span>
-          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Ecosystem</Link>
+          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Our Companies</Link>
           <span>/</span>
           <Link to="/jan-suvidha" className="hover:text-[#111827] transition-colors">Jan Suvidha</Link>
           <span>/</span>
@@ -215,7 +215,7 @@ export default function JayMurlidharComputer() {
                   Public Transparency &amp; Operating Role:
                 </p>
                 <p>
-                  Jay Murlidhar Computer operates as an independent digital facilitation and citizen assistance kiosk within the Jay Murlidhar Group ecosystem. We guide residents and small businesses through digital portal submissions, fee payments, and documentation without bureaucratic friction. We do not claim official government ownership or public employment.
+                  Jay Murlidhar Computer operates as an independent digital facilitation and citizen assistance kiosk within Jay Murlidhar Group. We guide residents and small businesses through digital portal submissions, fee payments, and documentation without bureaucratic friction. We do not claim official government ownership or public employment.
                 </p>
               </div>
             </div>
@@ -638,7 +638,7 @@ export default function JayMurlidharComputer() {
                 Integrated JMG Entity
               </span>
               <span className="text-sm font-bold text-[#111827]">
-                Part of the 6-Domain Jay Murlidhar Group Ecosystem
+                Part of Jay Murlidhar Group Companies
               </span>
             </div>
 
@@ -648,7 +648,7 @@ export default function JayMurlidharComputer() {
               </Link>
               <span>&bull;</span>
               <Link to="/ecosystem" className="text-[#2563EB] hover:underline">
-                Full Ecosystem Directory &rarr;
+                Group Companies Directory &rarr;
               </Link>
             </div>
           </div>

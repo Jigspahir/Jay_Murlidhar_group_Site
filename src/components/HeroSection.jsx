@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import JmgDigitalUniverse from './JmgDigitalUniverse';
+import TypewriterSpecialization from './TypewriterSpecialization';
 
-export default function HeroSection({ onOpenContact }) {
-  const [activeCategory, setActiveCategory] = useState('technology');
+export default function HeroSection({ onOpenContact: _onOpenContact }) {
+  const [_activeCategory, setActiveCategory] = useState('technology');
 
   return (
     <section className="ecosystem-section relative pt-[90px] sm:pt-[94px] md:pt-[96px] lg:pt-[88px] min-[1536px]:pt-[92px] pb-3 sm:pb-4 md:pb-5 lg:pb-7 xl:pb-8 bg-[#FFFFFF] text-[#0B1220] overflow-hidden border-b border-[#E2E8F0]">
@@ -40,9 +41,12 @@ export default function HeroSection({ onOpenContact }) {
             </h1>
 
             {/* Supporting Copy — Understated, Readable */}
-            <p className="text-base sm:text-[17px] text-[#475569] leading-relaxed font-normal max-w-[480px] mb-7 sm:mb-8">
+            <p className="text-base sm:text-[17px] text-[#475569] leading-relaxed font-normal max-w-[480px] mb-3 sm:mb-3.5">
               We build technology, business and digital experiences for people and organizations.
             </p>
+
+            {/* Animated Specialization Line */}
+            <TypewriterSpecialization />
 
             {/* Call to Actions — Refined Editorial Buttons (Equal 46px height, subtle hover) */}
             <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-3.5 mb-8 sm:mb-10 lg:mb-12">
@@ -50,7 +54,7 @@ export default function HeroSection({ onOpenContact }) {
                 to="/ecosystem"
                 className="inline-flex items-center justify-center gap-2 h-[44px] sm:h-[46px] px-5 sm:px-[22px] rounded-lg bg-[#0B1220] hover:bg-slate-800 text-white font-medium text-[13.5px] sm:text-sm tracking-tight transition-all duration-200 shadow-sm hover:shadow group w-full xs:w-auto"
               >
-                <span>Explore the Ecosystem</span>
+                <span>Explore Our Companies</span>
                 <ArrowRight className="w-4 h-4 text-white/90 group-hover:translate-x-0.5 transition-transform duration-200" />
               </Link>
 

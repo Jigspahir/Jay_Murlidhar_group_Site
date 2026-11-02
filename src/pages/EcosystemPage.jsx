@@ -22,7 +22,7 @@ export default function EcosystemPage({ onOpenContact }) {
         <div className="flex items-center gap-2 font-mono text-xs text-[#94A3B8] mb-8">
           <Link to="/" className="hover:text-[#111827] transition-colors">Home</Link>
           <span>/</span>
-          <span className="text-[#2563EB] font-semibold">Ecosystem</span>
+          <span className="text-[#2563EB] font-semibold">Our Companies</span>
         </div>
 
         {/* ========================================================================= */}
@@ -37,7 +37,7 @@ export default function EcosystemPage({ onOpenContact }) {
 
           <h1 className="text-3xl sm:text-5xl lg:text-[64px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.05] mb-6 break-words">
             THE JAY MURLIDHAR GROUP<br />
-            ECOSYSTEM.
+            COMPANIES.
           </h1>
 
           <p className="text-lg sm:text-xl text-[#64748B] leading-relaxed font-normal max-w-3xl">

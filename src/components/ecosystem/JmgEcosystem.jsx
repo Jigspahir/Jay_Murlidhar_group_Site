@@ -81,7 +81,7 @@ export default function JmgEcosystem({
             />
           </div>
           <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-400 font-semibold mt-1">
-            Central Core Ecosystem
+            Central Core Hub
           </span>
         </div>
 
@@ -193,7 +193,7 @@ export default function JmgEcosystem({
       <div 
         className="hidden sm:block ecosystem-orbit relative w-full aspect-square select-none mx-auto"
         role="region"
-        aria-label="Jay Murlidhar Group Circular Radial Ecosystem"
+        aria-label="Jay Murlidhar Group Circular Radial Architecture"
       >
         
         {/* Subtle Ambient Backlight Glow for active domain (Quiet, Restrained) */}

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
-import { ChevronRight, Cpu, Layers, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
-import ProductShowcase from '../components/ProductShowcase';
-import SolutionsSection from '../components/SolutionsSection';
+import { ChevronRight } from 'lucide-react';
 import HowWeBuild from '../components/HowWeBuild';
 import FinalCTA from '../components/FinalCTA';
 
@@ -39,12 +37,6 @@ export default function Solutions() {
           </div>
         </div>
       </div>
-
-      {/* Solutions Section & Interactive Demo */}
-      <SolutionsSection onOpenContact={onOpenContact} />
-
-      {/* Product Showcase */}
-      <ProductShowcase onOpenContact={onOpenContact} />
 
       {/* How We Build */}
       <HowWeBuild />

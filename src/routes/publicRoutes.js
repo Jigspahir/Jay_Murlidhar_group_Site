@@ -9,10 +9,12 @@ export const PUBLIC_ROUTES = Object.freeze({
   ABOUT: '/about',
   ECOSYSTEM: '/ecosystem',
   SOLUTIONS: '/solutions',
-  PROJECTS: '/projects',
+  SERVICES: '/services',
+  PROJECTS: '/services',
   CAREERS: '/careers',
   CAREERS_JOBS: '/careers/jobs',
   CAREERS_INTERNSHIPS: '/careers/internships',
+  ACADEMIC_INNOVATION: '/academic-innovation',
   CONTACT: '/contact',
 
   // Canonical Domain Routes

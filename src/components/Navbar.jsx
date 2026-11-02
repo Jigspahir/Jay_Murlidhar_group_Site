@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown, ShieldCheck } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { JMG_CATEGORIES, JMG_COMPANIES, getCompanyById } from '../data/jmgEcosystem';
+import { JMG_CATEGORIES, getCompanyById } from '../data/jmgEcosystem';
 import { JMGDomainGlyph } from './ecosystem/glyphs';
 
 export default function Navbar({ onOpenContact }) {
@@ -115,7 +115,7 @@ export default function Navbar({ onOpenContact }) {
                 }`}
                 aria-expanded={ecosystemDropdownOpen}
               >
-                <span>Ecosystem</span>
+                <span>Our Companies</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
                   ecosystemDropdownOpen 
                     ? 'rotate-180 text-[#2563EB]' 
@@ -132,17 +132,17 @@ export default function Navbar({ onOpenContact }) {
                     <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E2E8F0]">
                       <div>
                         <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#2563EB] block">
-                          Parent Group Directory
+                          Group Companies Directory
                         </span>
                         <span className="text-xs text-[#64748B]">
-                          6 Companies operating under one unified ecosystem
+                          6 Companies operating under Jay Murlidhar Group
                         </span>
                       </div>
                       <Link
                         to="/ecosystem"
                         className="text-xs font-semibold text-[#111827] hover:text-[#2563EB] inline-flex items-center gap-1"
                       >
-                        <span>Ecosystem Overview</span>
+                        <span>Company Overview</span>
                         <span>&rarr;</span>
                       </Link>
                     </div>
@@ -214,9 +214,9 @@ export default function Navbar({ onOpenContact }) {
 
                     {/* Bottom strip */}
                     <div className="mt-5 pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-[11px] text-[#64748B]">
-                      <span className="font-mono">Central Ecosystem &bull; Jay Murlidhar Group</span>
+                      <span className="font-mono">Jay Murlidhar Group &bull; Our Companies</span>
                       <Link to="/ecosystem" className="font-semibold text-[#2563EB] hover:underline">
-                        Explore Full Architecture Page &rarr;
+                        Explore All Companies &rarr;
                       </Link>
                     </div>
 
@@ -237,14 +237,14 @@ export default function Navbar({ onOpenContact }) {
             </Link>
 
             <Link
-              to="/projects"
+              to="/services"
               className={`text-sm font-medium transition-colors py-1 ${
-                location.pathname === '/projects'
+                location.pathname === '/services' || location.pathname === '/projects'
                   ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
                   : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
               }`}
             >
-              Projects
+              Our Services
             </Link>
 
             <Link
@@ -359,12 +359,12 @@ export default function Navbar({ onOpenContact }) {
                     onClick={() => setMobileMenuOpen(false)}
                     className="text-xl font-bold text-[#2563EB] flex items-center min-h-[44px]"
                   >
-                    Ecosystem &amp; Services
+                    Our Companies &amp; Services
                   </Link>
                   <button
                     onClick={() => setMobileEcosystemOpen(!mobileEcosystemOpen)}
                     className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[#64748B] hover:text-[#111827]"
-                    aria-label="Toggle Ecosystem Companies"
+                    aria-label="Toggle Group Companies"
                   >
                     <ChevronDown className={`w-5 h-5 transition-transform ${mobileEcosystemOpen ? 'rotate-180' : ''}`} />
                   </button>
@@ -410,11 +410,11 @@ export default function Navbar({ onOpenContact }) {
               </Link>
 
               <Link
-                to="/projects"
+                to="/services"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
               >
-                Projects
+                Our Services
               </Link>
 
               <Link
@@ -459,7 +459,7 @@ export default function Navbar({ onOpenContact }) {
               <ArrowRight className="w-4 h-4 text-blue-300" />
             </button>
             <div className="text-center font-mono text-xs text-[#94A3B8]">
-              One Group. Multiple Businesses. One Ecosystem.
+              One Group. Multiple Businesses. Our Companies.
             </div>
           </div>
         </div>

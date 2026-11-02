@@ -78,7 +78,7 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
         <div className="flex items-center gap-2 font-mono text-xs text-[#94A3B8] mb-8 flex-wrap">
           <Link to="/" className="hover:text-[#111827] transition-colors">JMG</Link>
           <span>/</span>
-          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Ecosystem</Link>
+          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Our Companies</Link>
           <span>/</span>
           <span className="text-[#2563EB] font-semibold">{domain.categoryTitle || domain.name}</span>
         </div>
@@ -129,7 +129,7 @@ export default function DomainDetailPage({ domainId: propDomainId, onOpenContact
               to="/ecosystem"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-[10px] bg-white border border-[#E2E8F0] hover:border-[#111827] text-[#111827] text-xs sm:text-sm font-semibold transition-colors duration-200"
             >
-              <span>View Full Ecosystem</span>
+              <span>View All Companies</span>
             </Link>
           </div>
         </div>

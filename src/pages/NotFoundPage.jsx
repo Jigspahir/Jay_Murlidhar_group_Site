@@ -38,7 +38,7 @@ export default function NotFoundPage({ domainHint }) {
         <div className="flex items-center gap-2 font-mono text-xs text-slate-400 mb-8 flex-wrap">
           <Link to="/" className="hover:text-white transition-colors">JMG</Link>
           <span>/</span>
-          <Link to="/ecosystem" className="hover:text-white transition-colors">Ecosystem</Link>
+          <Link to="/ecosystem" className="hover:text-white transition-colors">Our Companies</Link>
           <span>/</span>
           <span className="text-[#38BDF8] font-semibold">404 &mdash; Page Not Found</span>
         </div>
@@ -53,8 +53,8 @@ export default function NotFoundPage({ domainHint }) {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-bold text-white tracking-[-0.03em] leading-[1.08] mb-6">
-              LOST IN THE<br />
-              <span className="text-[#38BDF8]">ECOSYSTEM?</span>
+              LOOKING FOR OUR<br />
+              <span className="text-[#38BDF8]">COMPANIES?</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-8 max-w-xl">
@@ -94,7 +94,7 @@ export default function NotFoundPage({ domainHint }) {
                 to="/ecosystem"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0B1424] hover:bg-[#111E36] border border-slate-700 text-white font-semibold text-sm transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
               >
-                <span>Explore Ecosystem</span>
+                <span>Explore Our Companies</span>
                 <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>

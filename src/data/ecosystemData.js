@@ -110,7 +110,7 @@ export const EDUCATION_CARDS = [
   {
     number: '04',
     title: 'Digital Campus',
-    subtitle: 'Connected Ecosystem',
+    subtitle: 'Connected Campus Network',
     description: 'Smart campus infrastructure bridging IoT devices, contactless gates, digital libraries, and unified identity cards.',
     highlights: ['Contactless RFID/QR', 'Digital library loans', 'Automated emergency dispatch'],
     icon: 'Wifi',

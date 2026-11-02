@@ -7,9 +7,7 @@ import {
   Send, 
   Building2, 
   CheckCircle2, 
-  ChevronRight, 
-  Clock, 
-  Globe 
+  ChevronRight
 } from 'lucide-react';
 
 export default function Contact() {
@@ -51,7 +49,7 @@ export default function Contact() {
               CONNECT WITH JAY MURLIDHAR GROUP.
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
-              Whether you are an institution exploring ERP solutions, an enterprise looking for business services, or seeking partnerships across our ecosystem, we are here to assist you.
+              Whether you are an institution exploring ERP solutions, an enterprise looking for business services, or seeking partnerships across our companies, we are here to assist you.
             </p>
           </div>
         </div>
@@ -129,7 +127,7 @@ export default function Contact() {
                 to="/ecosystem"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800"
               >
-                Browse Ecosystem Directory &rarr;
+                Browse Company Directory &rarr;
               </Link>
             </div>
           </div>
@@ -139,7 +137,7 @@ export default function Contact() {
             <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-slate-900 mb-2">Send an Enquiry</h2>
               <p className="text-sm text-slate-500 mb-8">
-                Fill in your details below and our ecosystem coordination team will respond within 24 hours.
+                Fill in your details below and our group coordination team will respond within 24 hours.
               </p>
 
               {formSubmitted ? (
@@ -214,6 +212,7 @@ export default function Contact() {
                         <option value="business-services">Jay Murlidhar Business Services</option>
                         <option value="travel">Jay Murlidhar Tours</option>
                         <option value="retail">Jay Murlidhar Mobile &amp; Accessories</option>
+                        <option value="academic-internship">Academic Innovation &amp; Internships</option>
                         <option value="general">General Group Partnership</option>
                       </select>
                     </div>

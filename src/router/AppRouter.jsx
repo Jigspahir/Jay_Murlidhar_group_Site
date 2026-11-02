@@ -127,10 +127,11 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Ecosystem from "../pages/Ecosystem";
 import Solutions from "../pages/Solutions";
-import Projects from "../pages/Projects";
+import Services from "../pages/Services";
 import Careers from "../pages/Careers";
 import CareersJobs from "../pages/CareersJobs";
 import CareersInternships from "../pages/CareersInternships";
+import AcademicInnovation from "../pages/AcademicInnovation";
 import Contact from "../pages/Contact";
 
 // Domain pages
@@ -1067,10 +1068,14 @@ export default function AppRouter() {
           element={<Solutions />}
         />
 
-        {/* Portfolio & Deployments */}
+        {/* Our Services / What We Do */}
+        <Route
+          path="/services"
+          element={<Services />}
+        />
         <Route
           path="/projects"
-          element={<Projects />}
+          element={<Services />}
         />
 
         {/* Careers & Engineering Culture */}
@@ -1084,7 +1089,11 @@ export default function AppRouter() {
         />
         <Route
           path="/careers/internships"
-          element={<CareersInternships />}
+          element={<AcademicInnovation />}
+        />
+        <Route
+          path="/academic-innovation"
+          element={<AcademicInnovation />}
         />
 
         {/* Direct Contact */}

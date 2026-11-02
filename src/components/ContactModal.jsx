@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { X, Send, Check } from 'lucide-react';
 
-export default function ContactModal({ isOpen, onClose }) {
+export default function ContactModal({ isOpen, onClose, initialData }) {
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(() => ({
     name: '',
     email: '',
     organization: '',
-    interest: 'Education ERP',
-    message: ''
-  });
+    interest: initialData?.interest || initialData?.company || 'Jay Murlidhar Tech Solutions',
+    message: initialData?.message || ''
+  }));
 
   if (!isOpen) return null;
 
@@ -107,6 +107,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     <option value="Jay Murlidhar Tours">Jay Murlidhar Tours</option>
                     <option value="Jay Murlidhar Mobile & Accessories">Jay Murlidhar Mobile &amp; Accessories</option>
                     <option value="Education ERP Platform">Education ERP Platform</option>
+                    <option value="Academic Innovation / Internships">Academic Innovation / Internships</option>
                     <option value="Parent Group General Partnership">Parent Group General Partnership</option>
                   </select>
                 </div>

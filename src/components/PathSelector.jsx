@@ -134,7 +134,7 @@ export default function PathSelector() {
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-            Whether you are a student exploring new skills, a creator architecting technology, or an entrepreneur scaling a business, our ecosystem is built for your journey.
+            Whether you are a student exploring new skills, a creator architecting technology, or an entrepreneur scaling a business, our companies are built for your journey.
           </p>
         </div>
 

@@ -85,6 +85,7 @@ export const JMG_CANONICAL_ROUTES = new Set([
   '/about',
   '/ecosystem',
   '/solutions',
+  '/services',
   '/projects',
   '/careers',
   '/careers/jobs',

@@ -134,7 +134,7 @@ export default function CareersJobs() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-xs font-mono font-semibold uppercase tracking-[0.16em] mb-4 text-[#0284C7]">
               <Briefcase className="w-3.5 h-3.5 text-[#0284C7]" />
-              <span>JMG ECOSYSTEM TALENT</span>
+              <span>JMG GROUP TALENT</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mb-4 break-words">

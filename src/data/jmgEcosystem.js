@@ -572,7 +572,7 @@ export const JMG_ECOSYSTEM_NAV = {
     { label: 'Leadership', href: '/about' }
   ],
   ecosystem: [
-    { label: 'All Businesses', href: '/ecosystem' },
+    { label: 'All Companies', href: '/ecosystem' },
     { label: 'Technology', href: '/technology' },
     { label: 'Jan Suvidha', href: '/jan-suvidha' },
     { label: 'Insurance', href: '/insurance' },
