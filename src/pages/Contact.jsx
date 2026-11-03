@@ -7,11 +7,15 @@ import {
   Send, 
   Building2, 
   CheckCircle2, 
-  ChevronRight
+  ChevronRight,
+  AlertCircle
 } from 'lucide-react';
+import { validatePublicInquiry, checkSubmissionCooldown, sanitizeString } from '../utils/formSecurity';
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,6 +26,33 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Honeypot & input validation
+    const validation = validatePublicInquiry({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      honeypot
+    });
+
+    if (!validation.isValid) {
+      if (validation.isBot) {
+        setFormSubmitted(true);
+        return;
+      }
+      setErrorMessage(validation.error);
+      return;
+    }
+
+    // Cooldown check
+    const rateCheck = checkSubmissionCooldown('contact_page', 8000);
+    if (!rateCheck.allowed) {
+      setErrorMessage(rateCheck.message);
+      return;
+    }
+
     setFormSubmitted(true);
   };
 
@@ -156,6 +187,27 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Anti-spam honeypot field (hidden from legitimate users) */}
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                    <label htmlFor="contact_website_hp">Do not fill this field</label>
+                    <input
+                      id="contact_website_hp"
+                      type="text"
+                      name="website_hp"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
@@ -164,8 +216,9 @@ export default function Contact() {
                       <input
                         type="text"
                         required
+                        maxLength={100}
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, name: sanitizeString(e.target.value, 100) })}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm text-slate-900"
                         placeholder="e.g. Ramesh Patel"
                       />
@@ -177,8 +230,9 @@ export default function Contact() {
                       <input
                         type="email"
                         required
+                        maxLength={120}
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, email: sanitizeString(e.target.value, 120) })}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm text-slate-900"
                         placeholder="ramesh@example.com"
                       />
@@ -192,8 +246,9 @@ export default function Contact() {
                       </label>
                       <input
                         type="tel"
+                        maxLength={25}
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, phone: sanitizeString(e.target.value, 25) })}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm text-slate-900"
                         placeholder="+91 98765 43210"
                       />
@@ -226,8 +281,9 @@ export default function Contact() {
                     <textarea
                       required
                       rows={5}
+                      maxLength={2000}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, message: sanitizeString(e.target.value, 2000) })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm text-slate-900 resize-y"
                       placeholder="Please tell us about your requirements or enquiry..."
                     />

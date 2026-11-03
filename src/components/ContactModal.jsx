@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { X, Send, Check } from 'lucide-react';
+import { X, Send, Check, AlertCircle } from 'lucide-react';
+import { validatePublicInquiry, checkSubmissionCooldown, sanitizeString } from '../utils/formSecurity';
 
 export default function ContactModal({ isOpen, onClose, initialData }) {
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [formData, setFormData] = useState(() => ({
     name: '',
     email: '',
@@ -15,6 +18,33 @@ export default function ContactModal({ isOpen, onClose, initialData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Honeypot & input validation
+    const validation = validatePublicInquiry({
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      honeypot
+    });
+
+    if (!validation.isValid) {
+      if (validation.isBot) {
+        // Silently terminate bot submissions
+        setSubmitted(true);
+        return;
+      }
+      setErrorMessage(validation.error);
+      return;
+    }
+
+    // Rate-limiting check (cooldown)
+    const rateCheck = checkSubmissionCooldown('contact_modal', 8000);
+    if (!rateCheck.allowed) {
+      setErrorMessage(rateCheck.message);
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -62,6 +92,27 @@ export default function ContactModal({ isOpen, onClose, initialData }) {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Anti-spam honeypot field (hidden from legitimate users) */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                <label htmlFor="modal_website_hp">Do not fill this field</label>
+                <input
+                  id="modal_website_hp"
+                  type="text"
+                  name="website_hp"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
+              {errorMessage && (
+                <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-bold text-content-primary uppercase tracking-wider mb-1">
                   Full Name
@@ -69,9 +120,10 @@ export default function ContactModal({ isOpen, onClose, initialData }) {
                 <input
                   type="text"
                   required
+                  maxLength={100}
                   placeholder="e.g. Jigar Parmar"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, name: sanitizeString(e.target.value, 100) })}
                   className="w-full px-3.5 py-2 rounded-md border border-line-border text-xs focus:outline-none focus:border-brand-blue bg-surface-bg"
                 />
               </div>
@@ -84,9 +136,10 @@ export default function ContactModal({ isOpen, onClose, initialData }) {
                   <input
                     type="email"
                     required
+                    maxLength={120}
                     placeholder="name@organization.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, email: sanitizeString(e.target.value, 120) })}
                     className="w-full px-3.5 py-2 rounded-md border border-line-border text-xs focus:outline-none focus:border-brand-blue bg-surface-bg"
                   />
                 </div>

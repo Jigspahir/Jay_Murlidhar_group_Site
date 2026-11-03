@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, User, Mail, Phone, Briefcase, Link as LinkIcon, MessageSquare } from 'lucide-react';
+import { X, Send, CheckCircle2, User, Mail, Phone, Briefcase, Link as LinkIcon, MessageSquare, AlertCircle } from 'lucide-react';
 import { CAREER_DEPARTMENTS } from '../../data/careersData';
+import { validatePublicInquiry, checkSubmissionCooldown, sanitizeString } from '../../utils/formSecurity';
 
 export default function TalentPoolModal({ isOpen, onClose, preselectedDepartment }) {
   const [formData, setFormData] = useState({
@@ -14,11 +15,39 @@ export default function TalentPoolModal({ isOpen, onClose, preselectedDepartment
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Honeypot & input validation
+    const validation = validatePublicInquiry({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      honeypot
+    });
+
+    if (!validation.isValid) {
+      if (validation.isBot) {
+        setSubmitted(true);
+        return;
+      }
+      setErrorMessage(validation.error);
+      return;
+    }
+
+    const rateCheck = checkSubmissionCooldown('talent_pool', 8000);
+    if (!rateCheck.allowed) {
+      setErrorMessage(rateCheck.message);
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulate reliable dispatch
@@ -72,6 +101,27 @@ export default function TalentPoolModal({ isOpen, onClose, preselectedDepartment
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Anti-spam honeypot field (hidden from legitimate users) */}
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                  <label htmlFor="talent_website_hp">Do not fill this field</label>
+                  <input
+                    id="talent_website_hp"
+                    type="text"
+                    name="website_hp"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
+                {errorMessage && (
+                  <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 {/* Full Name */}
                 <div>
                   <label className="block text-xs font-mono font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
@@ -84,9 +134,10 @@ export default function TalentPoolModal({ isOpen, onClose, preselectedDepartment
                     <input
                       type="text"
                       required
+                      maxLength={100}
                       placeholder="e.g. Rahul Patel"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, name: sanitizeString(e.target.value, 100) })}
                       className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                     />
                   </div>

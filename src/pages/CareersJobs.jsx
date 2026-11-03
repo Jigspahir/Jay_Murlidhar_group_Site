@@ -10,9 +10,11 @@ import {
   Upload, 
   Send,
   Building,
-  Check
+  Check,
+  AlertCircle
 } from 'lucide-react';
 import FinalCTA from '../components/FinalCTA';
+import { validatePublicInquiry, checkSubmissionCooldown, sanitizeString } from '../utils/formSecurity';
 
 export default function CareersJobs() {
   const location = useLocation();
@@ -32,6 +34,8 @@ export default function CareersJobs() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
 
   // Realistic JMG ecosystem career positions
@@ -109,6 +113,32 @@ export default function CareersJobs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Honeypot & input validation
+    const validation = validatePublicInquiry({
+      name: formData.fullName,
+      email: formData.email,
+      phone: formData.mobileNumber,
+      message: formData.skills,
+      honeypot
+    });
+
+    if (!validation.isValid) {
+      if (validation.isBot) {
+        setSubmitted(true);
+        return;
+      }
+      setErrorMessage(validation.error);
+      return;
+    }
+
+    const rateCheck = checkSubmissionCooldown('careers_jobs', 8000);
+    if (!rateCheck.allowed) {
+      setErrorMessage(rateCheck.message);
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -284,6 +314,27 @@ export default function CareersJobs() {
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
+                      {/* Anti-spam honeypot field (hidden from legitimate users) */}
+                      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                        <label htmlFor="job_website_hp">Do not fill this field</label>
+                        <input
+                          id="job_website_hp"
+                          type="text"
+                          name="website_hp"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={honeypot}
+                          onChange={(e) => setHoneypot(e.target.value)}
+                        />
+                      </div>
+
+                      {errorMessage && (
+                        <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                          <span>{errorMessage}</span>
+                        </div>
+                      )}
+
                       {/* Full Name */}
                       <div>
                         <label className="block text-xs font-semibold text-[#334155] uppercase tracking-wider mb-1">
@@ -292,9 +343,10 @@ export default function CareersJobs() {
                         <input
                           type="text"
                           required
+                          maxLength={100}
                           placeholder="e.g. Jigar Parmar"
                           value={formData.fullName}
-                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                          onChange={(e) => setFormData({ ...formData, fullName: sanitizeString(e.target.value, 100) })}
                           className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#CBD5E1] bg-white text-xs text-[#0B1220] focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7]"
                         />
                       </div>
