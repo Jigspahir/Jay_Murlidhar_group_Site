@@ -125,6 +125,7 @@ import { PERMISSIONS } from "../config/permissions";
 // Main pages
 import Home from "../pages/Home";
 import About from "../pages/About";
+import Businesses from "../pages/Businesses";
 import Ecosystem from "../pages/Ecosystem";
 import Solutions from "../pages/Solutions";
 import Services from "../pages/Services";
@@ -1056,26 +1057,34 @@ export default function AppRouter() {
         {/* Group & Story */}
         <Route path="/about" element={<About />} />
 
-        {/* Dedicated Ecosystem Explorer */}
+        {/* Unified Our Businesses Directory (Consolidated Companies & Services) */}
+        <Route
+          path="/businesses"
+          element={<Businesses />}
+        />
+
+        {/* Redirects & Aliases to Canonical /businesses */}
         <Route
           path="/ecosystem"
-          element={<Ecosystem />}
+          element={<Navigate to="/businesses" replace />}
+        />
+        <Route
+          path="/companies"
+          element={<Navigate to="/businesses" replace />}
+        />
+        <Route
+          path="/services"
+          element={<Navigate to="/businesses" replace />}
+        />
+        <Route
+          path="/projects"
+          element={<Navigate to="/businesses" replace />}
         />
 
         {/* Solutions & ERP Showcase */}
         <Route
           path="/solutions"
           element={<Solutions />}
-        />
-
-        {/* Our Services / What We Do */}
-        <Route
-          path="/services"
-          element={<Services />}
-        />
-        <Route
-          path="/projects"
-          element={<Services />}
         />
 
         {/* Careers & Engineering Culture */}

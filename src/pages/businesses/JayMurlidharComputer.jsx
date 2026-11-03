@@ -126,7 +126,7 @@ export default function JayMurlidharComputer() {
         <div className="flex items-center gap-2 font-mono text-xs text-[#94A3B8] mb-8 flex-wrap">
           <Link to="/" className="hover:text-[#111827] transition-colors">JMG</Link>
           <span>/</span>
-          <Link to="/ecosystem" className="hover:text-[#111827] transition-colors">Our Companies</Link>
+          <Link to="/businesses" className="hover:text-[#111827] transition-colors">Our Businesses</Link>
           <span>/</span>
           <Link to="/jan-suvidha" className="hover:text-[#111827] transition-colors">Jan Suvidha</Link>
           <span>/</span>
@@ -647,8 +647,8 @@ export default function JayMurlidharComputer() {
                 &larr; Jan Suvidha Domain
               </Link>
               <span>&bull;</span>
-              <Link to="/ecosystem" className="text-[#2563EB] hover:underline">
-                Group Companies Directory &rarr;
+              <Link to="/businesses" className="text-[#2563EB] hover:underline">
+                Our Businesses Directory &rarr;
               </Link>
             </div>
           </div>

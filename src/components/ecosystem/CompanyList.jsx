@@ -96,14 +96,14 @@ export default function CompanyList({
         })}
       </div>
 
-      {/* Quick Link to Dedicated Ecosystem Page */}
+      {/* Quick Link to Dedicated Businesses Directory Page */}
       <div className="mt-8 flex items-center justify-between text-xs text-slate-400">
-        <span>All 10 companies operate under unified JMG governance</span>
+        <span>Operating companies under unified JMG governance</span>
         <Link 
-          to="/ecosystem" 
+          to="/businesses" 
           className="text-[#38BDF8] hover:underline flex items-center gap-1 font-semibold focus:outline-none focus:ring-1 focus:ring-[#38BDF8]"
         >
-          <span>View All Companies</span>
+          <span>View All Businesses</span>
           <ChevronRight className="w-3.5 h-3.5" />
         </Link>
       </div>

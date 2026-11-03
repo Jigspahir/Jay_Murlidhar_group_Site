@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown, ShieldCheck } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { JMG_CATEGORIES, getCompanyById } from '../data/jmgEcosystem';
-import { JMGDomainGlyph } from './ecosystem/glyphs';
+import MegaMenu from './MegaMenu';
+import { JMG_BUSINESS_DOMAINS } from '../data/businessesData';
 
 export default function Navbar({ onOpenContact }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [ecosystemDropdownOpen, setEcosystemDropdownOpen] = useState(false);
-  const [mobileEcosystemOpen, setMobileEcosystemOpen] = useState(false);
+  const [businessesDropdownOpen, setBusinessesDropdownOpen] = useState(false);
+  const [mobileBusinessesOpen, setMobileBusinessesOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
 
@@ -25,7 +25,7 @@ export default function Navbar({ onOpenContact }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setEcosystemDropdownOpen(false);
+        setBusinessesDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -34,14 +34,14 @@ export default function Navbar({ onOpenContact }) {
 
   // Close menus on route change or Escape key
   useEffect(() => {
-    setEcosystemDropdownOpen(false);
+    setBusinessesDropdownOpen(false);
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setEcosystemDropdownOpen(false);
+        setBusinessesDropdownOpen(false);
         setMobileMenuOpen(false);
       }
     };
@@ -61,7 +61,16 @@ export default function Navbar({ onOpenContact }) {
     };
   }, [mobileMenuOpen]);
 
-  const isLightHeader = true;
+  const isBusinessesActive = 
+    location.pathname === '/businesses' || 
+    location.pathname.startsWith('/ecosystem') || 
+    location.pathname.startsWith('/technology') ||
+    location.pathname.startsWith('/jan-suvidha') ||
+    location.pathname.startsWith('/insurance') ||
+    location.pathname.startsWith('/business-services') ||
+    location.pathname.startsWith('/travel') ||
+    location.pathname.startsWith('/retail') ||
+    location.pathname.startsWith('/jay-murlidhar-');
 
   return (
     <>
@@ -86,173 +95,69 @@ export default function Navbar({ onOpenContact }) {
             />
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+          {/* Desktop Navigation Links — Unified Structure: About, Our Businesses, Solutions, Careers, Contact */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link
               to="/about"
               className={`text-sm font-medium transition-colors py-1 ${
                 location.pathname === '/about'
-                  ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
-                  : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
+                  ? 'text-[#2563EB] font-semibold'
+                  : 'text-[#64748B] hover:text-[#111827]'
               }`}
             >
               About
             </Link>
 
-            {/* Ecosystem with Mega-Menu Dropdown */}
+            {/* Unified Our Businesses with Two-Panel Mega Menu */}
             <div 
               ref={dropdownRef}
               className="relative"
-              onMouseEnter={() => setEcosystemDropdownOpen(true)}
-              onMouseLeave={() => setEcosystemDropdownOpen(false)}
+              onMouseEnter={() => setBusinessesDropdownOpen(true)}
+              onMouseLeave={() => setBusinessesDropdownOpen(false)}
             >
               <button
-                onClick={() => setEcosystemDropdownOpen(!ecosystemDropdownOpen)}
-                className={`flex items-center gap-1.5 text-sm font-medium transition-colors py-1 ${
-                  ecosystemDropdownOpen || location.pathname.startsWith('/ecosystem') || location.pathname.startsWith('/jay-murlidhar-')
-                    ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
-                    : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
+                type="button"
+                onClick={() => setBusinessesDropdownOpen(!businessesDropdownOpen)}
+                className={`flex items-center gap-1.5 text-sm font-medium transition-colors py-1 cursor-pointer ${
+                  businessesDropdownOpen || isBusinessesActive
+                    ? 'text-[#2563EB] font-semibold'
+                    : 'text-[#64748B] hover:text-[#111827]'
                 }`}
-                aria-expanded={ecosystemDropdownOpen}
+                aria-expanded={businessesDropdownOpen}
               >
-                <span>Our Companies</span>
+                <span>Our Businesses</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  ecosystemDropdownOpen 
+                  businessesDropdownOpen 
                     ? 'rotate-180 text-[#2563EB]' 
-                    : isLightHeader ? 'text-[#94A3B8]' : 'text-slate-400'
+                    : 'text-[#94A3B8]'
                 }`} />
               </button>
 
-              {/* Clean Structured Mega-Menu (Not Overly Large) */}
-              {ecosystemDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[880px] max-w-[calc(100vw-48px)] pt-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="bg-white border border-[#E2E8F0] rounded-[16px] shadow-[0_12px_36px_rgba(0,0,0,0.08)] overflow-hidden p-6 text-[#111827]">
-                    
-                    {/* Top Header of Menu */}
-                    <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E2E8F0]">
-                      <div>
-                        <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#2563EB] block">
-                          Group Companies Directory
-                        </span>
-                        <span className="text-xs text-[#64748B]">
-                          6 Companies operating under Jay Murlidhar Group
-                        </span>
-                      </div>
-                      <Link
-                        to="/ecosystem"
-                        className="text-xs font-semibold text-[#111827] hover:text-[#2563EB] inline-flex items-center gap-1"
-                      >
-                        <span>Company Overview</span>
-                        <span>&rarr;</span>
-                      </Link>
-                    </div>
-
-                    {/* 6 Grouped Columns */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                      {JMG_CATEGORIES.map((cat) => {
-                        const companies = cat.companyIds
-                          .map((id) => getCompanyById(id))
-                          .filter(Boolean);
-
-                        return (
-                          <div key={cat.id} className="space-y-2">
-                            <Link 
-                              to={cat.domainRoute} 
-                              className="flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#111827] hover:text-[#2563EB] pb-1.5 border-b border-[#E2E8F0]/70 transition-colors group"
-                            >
-                              <div 
-                                className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 border"
-                                style={{
-                                  backgroundColor: `${cat.accent || '#2563EB'}0F`,
-                                  borderColor: `${cat.accent || '#2563EB'}30`,
-                                  color: cat.accent || '#2563EB'
-                                }}
-                                aria-hidden="true"
-                              >
-                                <JMGDomainGlyph domainId={cat.id} className="w-3.5 h-3.5" />
-                              </div>
-                              <span className="text-[#2563EB]">{cat.number}</span>
-                              <span className="text-[#94A3B8]">&mdash;</span>
-                              <span className="tracking-wider truncate">{cat.shortName}</span>
-                            </Link>
-
-                            <div className="space-y-1">
-                              {companies.map((comp) => (
-                                <Link
-                                  key={comp.id}
-                                  to={comp.route || comp.path}
-                                  className="block p-1.5 rounded-md hover:bg-slate-50 transition-colors group"
-                                >
-                                  <div className="flex items-center justify-between">
-                                    <span className="text-xs font-semibold text-[#111827] group-hover:text-[#2563EB] transition-colors line-clamp-1">
-                                      {comp.name}
-                                    </span>
-                                    <span className="text-[10px] text-[#94A3B8] group-hover:text-[#2563EB] font-mono pl-1">
-                                      &rarr;
-                                    </span>
-                                  </div>
-                                  <span className="text-[11px] text-[#64748B] block truncate">
-                                    {comp.subtitle}
-                                  </span>
-                                  {comp.services && comp.services[0]?.items && (
-                                    <div className="mt-1.5 pt-1 border-t border-slate-100 space-y-0.5">
-                                      {comp.services.map((s) => (
-                                        <div key={s.id || s.title} className="text-[10px] text-slate-500 font-medium flex items-center gap-1 truncate">
-                                          <span className="text-[#2563EB] text-[8px]">&bull;</span>
-                                          <span>{s.title}</span>
-                                        </div>
-                                      ))}
-                                    </div>
-                                  )}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {/* Bottom strip */}
-                    <div className="mt-5 pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-[11px] text-[#64748B]">
-                      <span className="font-mono">Jay Murlidhar Group &bull; Our Companies</span>
-                      <Link to="/ecosystem" className="font-semibold text-[#2563EB] hover:underline">
-                        Explore All Companies &rarr;
-                      </Link>
-                    </div>
-
-                  </div>
-                </div>
-              )}
+              {/* Two-Panel Mega Menu Component */}
+              <MegaMenu 
+                isOpen={businessesDropdownOpen} 
+                onClose={() => setBusinessesDropdownOpen(false)} 
+                onOpenContact={onOpenContact}
+              />
             </div>
 
             <Link
               to="/solutions"
               className={`text-sm font-medium transition-colors py-1 ${
                 location.pathname === '/solutions'
-                  ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
-                  : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
+                  ? 'text-[#2563EB] font-semibold'
+                  : 'text-[#64748B] hover:text-[#111827]'
               }`}
             >
               Solutions
             </Link>
 
             <Link
-              to="/services"
-              className={`text-sm font-medium transition-colors py-1 ${
-                location.pathname === '/services' || location.pathname === '/projects'
-                  ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
-                  : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Our Services
-            </Link>
-
-            <Link
               to="/careers"
               className={`text-sm font-medium transition-colors py-1 ${
                 location.pathname.startsWith('/careers')
-                  ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
-                  : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
+                  ? 'text-[#2563EB] font-semibold'
+                  : 'text-[#64748B] hover:text-[#111827]'
               }`}
             >
               Careers
@@ -262,8 +167,8 @@ export default function Navbar({ onOpenContact }) {
               to="/contact"
               className={`text-sm font-medium transition-colors py-1 ${
                 location.pathname === '/contact'
-                  ? isLightHeader ? 'text-[#2563EB] font-semibold' : 'text-[#38BDF8] font-semibold'
-                  : isLightHeader ? 'text-[#64748B] hover:text-[#111827]' : 'text-slate-300 hover:text-white'
+                  ? 'text-[#2563EB] font-semibold'
+                  : 'text-[#64748B] hover:text-[#111827]'
               }`}
             >
               Contact
@@ -272,15 +177,12 @@ export default function Navbar({ onOpenContact }) {
 
           {/* Right Action Area */}
           <div className="flex items-center gap-3 sm:gap-4 w-fit shrink-0">
-            {/* Compact Right Action Group: Let's Talk + Shield (20px gap) */}
+            {/* Compact Right Action Group: Let's Talk + Shield */}
             <div className="hidden sm:flex items-center gap-5 w-fit shrink-0">
               <button
+                type="button"
                 onClick={onOpenContact}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-[10px] text-xs sm:text-sm font-medium transition-colors duration-200 ${
-                  isLightHeader
-                    ? 'bg-[#111827] hover:bg-[#2563EB] text-white'
-                    : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
-                }`}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[10px] text-xs sm:text-sm font-medium transition-colors duration-200 bg-[#111827] hover:bg-[#2563EB] text-white cursor-pointer"
               >
                 <span>Let's Talk</span>
                 <ArrowRight className="w-3.5 h-3.5 text-blue-200" />
@@ -298,19 +200,18 @@ export default function Navbar({ onOpenContact }) {
                 </Link>
                 <div className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-1 hidden group-hover/access:flex group-focus-within/access:flex flex-col items-center z-50 animate-in fade-in duration-150">
                   <span className="w-1.5 h-1.5 -mb-0.5 rotate-45 bg-[#0F172A]"></span>
-                  <span className="whitespace-nowrap px-2 py-1 text-[11px] font-medium text-white bg-[#0F172A] rounded shadow-md">
-                    Secure Access
+                  <span className="bg-[#0F172A] text-white text-[10px] font-mono font-medium py-1 px-2.5 rounded whitespace-nowrap shadow-lg">
+                    Admin Portal
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Mobile Menu Button (Min 44px touch target) */}
+            {/* Mobile Hamburger Toggle */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className={`lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-md transition-colors ${
-                isLightHeader ? 'text-[#111827] hover:bg-slate-100' : 'text-white hover:bg-white/10'
-              }`}
+              className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-md transition-colors text-[#111827] hover:bg-slate-100"
               aria-label="Open Navigation Menu"
             >
               <Menu className="w-6 h-6" />
@@ -333,6 +234,7 @@ export default function Navbar({ onOpenContact }) {
                 />
               </Link>
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(false)}
                 className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-md text-[#111827] hover:bg-slate-200 transition-colors"
                 aria-label="Close Menu"
@@ -341,7 +243,7 @@ export default function Navbar({ onOpenContact }) {
               </button>
             </div>
 
-            {/* Mobile Nav Links */}
+            {/* Mobile Nav Links — Consolidated 5 items */}
             <nav className="space-y-3">
               <Link
                 to="/about"
@@ -351,52 +253,59 @@ export default function Navbar({ onOpenContact }) {
                 About
               </Link>
 
-              {/* Mobile Ecosystem Accordion */}
+              {/* Mobile Our Businesses Accordion */}
               <div className="py-2 border-y border-[#E2E8F0]">
                 <div className="flex items-center justify-between py-1">
                   <Link
-                    to="/ecosystem"
+                    to="/businesses"
                     onClick={() => setMobileMenuOpen(false)}
                     className="text-xl font-bold text-[#2563EB] flex items-center min-h-[44px]"
                   >
-                    Our Companies &amp; Services
+                    Our Businesses
                   </Link>
                   <button
-                    onClick={() => setMobileEcosystemOpen(!mobileEcosystemOpen)}
+                    type="button"
+                    onClick={() => setMobileBusinessesOpen(!mobileBusinessesOpen)}
                     className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[#64748B] hover:text-[#111827]"
-                    aria-label="Toggle Group Companies"
+                    aria-label="Toggle Businesses Directory"
                   >
-                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileEcosystemOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileBusinessesOpen ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
 
-                {mobileEcosystemOpen && (
+                {mobileBusinessesOpen && (
                   <div className="mt-3 pl-3 space-y-4 pb-2">
-                    {JMG_CATEGORIES.map((cat) => {
-                      const companies = cat.companyIds
-                        .map((id) => getCompanyById(id))
-                        .filter(Boolean);
-
-                      return (
-                        <div key={cat.id} className="space-y-1.5">
-                          <span className="font-mono text-xs font-semibold text-[#94A3B8] uppercase">
-                            {cat.name}
+                    {JMG_BUSINESS_DOMAINS.map((domain) => (
+                      <div key={domain.id} className="space-y-1.5 border-b border-slate-100 pb-2.5">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-xs font-bold text-[#2563EB]">
+                            {domain.number}
                           </span>
-                          <div className="space-y-1">
-                            {companies.map((comp) => (
-                              <Link
-                                key={comp.id}
-                                to={comp.route || comp.path}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="block text-sm font-semibold text-[#111827] hover:text-[#2563EB] py-1.5 min-h-[36px]"
-                              >
-                                {comp.name}
-                              </Link>
-                            ))}
-                          </div>
+                          <span className="font-mono text-xs font-semibold text-[#94A3B8] uppercase">
+                            {domain.name}
+                          </span>
                         </div>
-                      );
-                    })}
+                        <div className="space-y-1 pl-4">
+                          <Link
+                            to={domain.company.route}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block text-sm font-semibold text-[#111827] hover:text-[#2563EB] py-1"
+                          >
+                            {domain.company.name} &rarr;
+                          </Link>
+                          <span className="text-xs text-[#64748B] block">
+                            {domain.services.length} Verified Services
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                    <Link
+                      to="/businesses"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-sm font-bold text-[#2563EB] pt-1"
+                    >
+                      Explore Complete Businesses Directory &rarr;
+                    </Link>
                   </div>
                 )}
               </div>
@@ -407,14 +316,6 @@ export default function Navbar({ onOpenContact }) {
                 className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
               >
                 Solutions
-              </Link>
-
-              <Link
-                to="/services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-xl font-bold text-[#111827] hover:text-[#2563EB] py-2 min-h-[44px] flex items-center"
-              >
-                Our Services
               </Link>
 
               <Link
@@ -433,7 +334,7 @@ export default function Navbar({ onOpenContact }) {
                 Contact
               </Link>
 
-              {/* Admin Panel & Secure Access Link with accessible text and touch target */}
+              {/* Admin Panel & Secure Access Link */}
               <div className="pt-2 border-t border-[#E2E8F0]/80">
                 <Link
                   to="/admin/login"
@@ -449,9 +350,10 @@ export default function Navbar({ onOpenContact }) {
 
           <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
             <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenContact();
+                if (onOpenContact) onOpenContact();
               }}
               className="w-full min-h-[48px] py-3.5 rounded-[10px] bg-[#111827] hover:bg-[#2563EB] active:bg-[#1E40AF] text-white font-medium text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
@@ -459,7 +361,7 @@ export default function Navbar({ onOpenContact }) {
               <ArrowRight className="w-4 h-4 text-blue-300" />
             </button>
             <div className="text-center font-mono text-xs text-[#94A3B8]">
-              One Group. Multiple Businesses. Our Companies.
+              One Group. Six Business Domains. Connected Solutions.
             </div>
           </div>
         </div>

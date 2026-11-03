@@ -78,10 +78,10 @@ export default function About() {
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
               <Link
-                to="/ecosystem"
+                to="/businesses"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm"
               >
-                <span>Explore Our Companies</span>
+                <span>Explore Our Businesses</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <button

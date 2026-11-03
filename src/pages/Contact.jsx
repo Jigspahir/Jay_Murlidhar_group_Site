@@ -124,10 +124,10 @@ export default function Contact() {
                 Explore our dedicated domain and operating company pages for specialized point-of-contact details.
               </p>
               <Link
-                to="/ecosystem"
+                to="/businesses"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800"
               >
-                Browse Company Directory &rarr;
+                Browse Our Businesses Directory &rarr;
               </Link>
             </div>
           </div>

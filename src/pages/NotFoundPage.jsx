@@ -38,7 +38,7 @@ export default function NotFoundPage({ domainHint }) {
         <div className="flex items-center gap-2 font-mono text-xs text-slate-400 mb-8 flex-wrap">
           <Link to="/" className="hover:text-white transition-colors">JMG</Link>
           <span>/</span>
-          <Link to="/ecosystem" className="hover:text-white transition-colors">Our Companies</Link>
+          <Link to="/businesses" className="hover:text-white transition-colors">Our Businesses</Link>
           <span>/</span>
           <span className="text-[#38BDF8] font-semibold">404 &mdash; Page Not Found</span>
         </div>
@@ -91,10 +91,10 @@ export default function NotFoundPage({ domainHint }) {
               </Link>
 
               <Link
-                to="/ecosystem"
+                to="/businesses"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0B1424] hover:bg-[#111E36] border border-slate-700 text-white font-semibold text-sm transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
               >
-                <span>Explore Our Companies</span>
+                <span>Explore Our Businesses</span>
                 <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>

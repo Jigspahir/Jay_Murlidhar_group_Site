@@ -42,10 +42,10 @@ export default function FinalCTA({
             </button>
 
             <Link
-              to="/ecosystem"
+              to="/businesses"
               className="inline-flex items-center justify-center gap-2 min-h-[46px] px-6 sm:px-7 py-3 rounded-[10px] bg-white hover:bg-slate-100 text-[#111827] font-medium text-sm border border-[#E2E8F0] transition-colors duration-200"
             >
-              <span>Explore JMG</span>
+              <span>Explore Our Businesses</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

@@ -175,8 +175,8 @@ export default function FloatingDigitalInterface({ onCategoryHover }) {
         {/* Panel Footer Bar */}
         <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-slate-400">
           <span>Interaction Mode: Real-Time Preview</span>
-          <Link to="/ecosystem" className="text-[#38BDF8] hover:underline flex items-center gap-0.5">
-            <span>Explore All 10 Entities</span>
+          <Link to="/businesses" className="text-[#38BDF8] hover:underline flex items-center gap-0.5">
+            <span>Explore All 6 Domains</span>
             <span>&rarr;</span>
           </Link>
         </div>

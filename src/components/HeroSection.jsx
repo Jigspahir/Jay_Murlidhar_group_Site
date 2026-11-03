@@ -51,10 +51,10 @@ export default function HeroSection({ onOpenContact: _onOpenContact }) {
             {/* Call to Actions — Refined Editorial Buttons (Equal 46px height, subtle hover) */}
             <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-3.5 mb-8 sm:mb-10 lg:mb-12">
               <Link
-                to="/ecosystem"
+                to="/businesses"
                 className="inline-flex items-center justify-center gap-2 h-[44px] sm:h-[46px] px-5 sm:px-[22px] rounded-lg bg-[#0B1220] hover:bg-slate-800 text-white font-medium text-[13.5px] sm:text-sm tracking-tight transition-all duration-200 shadow-sm hover:shadow group w-full xs:w-auto"
               >
-                <span>Explore Our Companies</span>
+                <span>Explore Our Businesses</span>
                 <ArrowRight className="w-4 h-4 text-white/90 group-hover:translate-x-0.5 transition-transform duration-200" />
               </Link>
 

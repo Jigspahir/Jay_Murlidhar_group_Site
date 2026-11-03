@@ -1,112 +1,258 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
-  GraduationCap, 
-  Cpu, 
-  TrendingUp, 
-  ShieldCheck, 
-  Briefcase, 
-  Building2, 
-  Plane, 
-  Smartphone, 
-  Globe2, 
-  ArrowRight,
-  ExternalLink
+  ArrowRight, 
+  CheckCircle2, 
+  ExternalLink, 
+  Send,
+  Layers
 } from 'lucide-react';
-import { BUSINESSES } from '../data/ecosystemData';
+import { JMG_BUSINESS_DOMAINS } from '../data/businessesData';
+import { JMGDomainGlyph } from './ecosystem/glyphs';
 
-const iconMap = {
-  GraduationCap,
-  Cpu,
-  TrendingUp,
-  ShieldCheck,
-  Briefcase,
-  Building2,
-  Plane,
-  Smartphone,
-  Globe2
-};
+export default function MegaMenu({ isOpen, onClose, onOpenContact }) {
+  const [selectedDomainId, setSelectedDomainId] = useState(JMG_BUSINESS_DOMAINS[0].id);
 
-export default function MegaMenu({ isOpen, onClose, onSelectBusiness }) {
   if (!isOpen) return null;
 
+  const currentDomain = JMG_BUSINESS_DOMAINS.find(d => d.id === selectedDomainId) || JMG_BUSINESS_DOMAINS[0];
+
+  const handleServiceInquiry = (service) => {
+    if (onClose) onClose();
+    if (onOpenContact) {
+      onOpenContact({
+        interest: currentDomain.company.name,
+        message: `Inquiry regarding ${service.name} (${currentDomain.name} domain)`
+      });
+    }
+  };
+
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 12, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 8, scale: 0.98 }}
-        transition={{ duration: 0.2, ease: 'easeOut' }}
-        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[92vw] max-w-5xl bg-white/95 backdrop-blur-2xl rounded-card p-6 shadow-2xl border border-slate-200/90 z-50 overflow-hidden"
-        onMouseLeave={onClose}
-      >
-        {/* Subtle accent bar at top */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500" />
-
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
-          <div>
-            <div className="text-[11px] font-extrabold uppercase tracking-widest text-blue-600 mb-0.5">
+    <div 
+      className="absolute top-full left-1/2 -translate-x-1/2 w-[980px] max-w-[calc(100vw-32px)] pt-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+      onMouseLeave={onClose}
+    >
+      <div className="bg-white border border-[#E2E8F0] rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.12)] overflow-hidden text-[#0F172A]">
+        
+        {/* Top Header Bar */}
+        <div className="px-6 py-4 border-b border-[#E2E8F0] bg-slate-50/70 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#2563EB] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
               OUR BUSINESSES
-            </div>
-            <h3 className="text-sm font-semibold text-slate-800">
-              Integrated Multi-Disciplinary Group Companies
-            </h3>
+            </span>
+            <span className="text-xs text-[#64748B] hidden sm:inline">
+              Six Official Business Domains &bull; Operating Companies &bull; Verified Services
+            </span>
           </div>
-          <a
-            href="#businesses"
+
+          <Link
+            to="/businesses"
             onClick={onClose}
-            className="text-xs font-semibold text-slate-600 hover:text-blue-600 flex items-center gap-1.5 transition-colors group"
+            className="text-xs font-semibold text-[#2563EB] hover:text-blue-700 inline-flex items-center gap-1 group"
           >
-            <span>Explore All 9 Verticals</span>
+            <span>View All Businesses Directory</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          </Link>
         </div>
 
-        {/* 3x3 Grid for 9 Businesses */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
-          {BUSINESSES.map((item) => {
-            const Icon = iconMap[item.icon] || Briefcase;
-            return (
-              <a
-                key={item.id}
-                href={`#business-${item.id}`}
-                onClick={(e) => {
-                  onClose();
-                  if (onSelectBusiness) onSelectBusiness(item.id);
-                }}
-                className="group p-3 rounded-2xl hover:bg-slate-50/90 border border-transparent hover:border-slate-200/80 transition-all duration-200 flex items-start gap-3 relative"
-              >
-                <div 
-                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-sm"
-                  style={{ backgroundColor: `${item.color}15`, color: item.color }}
+        {/* Two-Panel Layout */}
+        <div className="grid grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#E2E8F0] min-h-[460px]">
+          
+          {/* LEFT PANEL: 6 Domains Selector (Width: 4 cols) */}
+          <div className="col-span-12 md:col-span-4 p-3 bg-[#F8FAFC]/60 space-y-1.5 overflow-y-auto max-h-[520px]">
+            <div className="px-3 py-1.5 font-mono text-[11px] font-semibold text-[#94A3B8] uppercase tracking-wider">
+              Select Business Domain
+            </div>
+
+            {JMG_BUSINESS_DOMAINS.map((domain) => {
+              const isSelected = domain.id === selectedDomainId;
+
+              return (
+                <button
+                  key={domain.id}
+                  type="button"
+                  onMouseEnter={() => setSelectedDomainId(domain.id)}
+                  onClick={() => setSelectedDomainId(domain.id)}
+                  className={`w-full text-left p-3 rounded-xl transition-all duration-150 flex items-center justify-between group cursor-pointer ${
+                    isSelected
+                      ? 'bg-white shadow-[0_2px_10px_rgba(37,99,235,0.08)] border border-blue-200 text-[#0F172A]'
+                      : 'hover:bg-white/80 border border-transparent text-[#475569] hover:text-[#0F172A]'
+                  }`}
                 >
-                  <Icon className="w-4 h-4" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-1">
-                    <span className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {item.title}
-                    </span>
-                    <ArrowRight className="w-3 h-3 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div 
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 border transition-all ${
+                        isSelected ? 'border-blue-300 ring-2 ring-blue-100' : 'border-slate-200'
+                      }`}
+                      style={{
+                        backgroundColor: `${domain.accentColor}12`,
+                        color: domain.accentColor
+                      }}
+                      aria-hidden="true"
+                    >
+                      <JMGDomainGlyph domainId={domain.id} className="w-4 h-4" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-mono text-[11px] font-bold text-[#2563EB]">
+                          {domain.number}
+                        </span>
+                        <span className="text-xs font-bold text-[#0F172A] truncate">
+                          {domain.name}
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#64748B] block truncate font-medium">
+                        {domain.company.name}
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-xs text-slate-500 line-clamp-1 mt-0.5 font-normal">
-                    {item.description}
-                  </p>
+
+                  <ArrowRight className={`w-3.5 h-3.5 flex-shrink-0 transition-all ${
+                    isSelected 
+                      ? 'text-[#2563EB] translate-x-0.5 opacity-100' 
+                      : 'text-slate-300 opacity-0 group-hover:opacity-100'
+                  }`} />
+                </button>
+              );
+            })}
+          </div>
+
+          {/* RIGHT PANEL: Operating Company & Verified Services (Width: 8 cols) */}
+          <div className="col-span-12 md:col-span-8 p-6 flex flex-col justify-between overflow-y-auto max-h-[520px]">
+            <div className="space-y-5">
+              
+              {/* Domain & Operating Company Header Card */}
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[11px] font-bold text-[#2563EB]">
+                      DOMAIN {currentDomain.number}
+                    </span>
+                    <span className="text-slate-300">&bull;</span>
+                    <span className="font-mono text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">
+                      {currentDomain.categoryTitle}
+                    </span>
+                  </div>
+
+                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 inline-flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    Est. {currentDomain.company.established}
+                  </span>
                 </div>
-              </a>
-            );
-          })}
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                  <div>
+                    <h4 className="text-base font-bold text-[#0F172A]">
+                      {currentDomain.company.name}
+                    </h4>
+                    <p className="text-xs text-[#475569] mt-1 leading-relaxed">
+                      {currentDomain.company.description}
+                    </p>
+                  </div>
+
+                  <Link
+                    to={currentDomain.company.route}
+                    onClick={onClose}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white hover:bg-slate-100 border border-slate-300 text-xs font-semibold text-[#0F172A] hover:text-[#2563EB] shadow-sm flex-shrink-0 transition-colors"
+                  >
+                    <span>Company Detail</span>
+                    <ExternalLink className="w-3 h-3 text-[#2563EB]" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Verified Services Header */}
+              <div className="flex items-center justify-between pt-1">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span className="text-xs font-bold text-[#0F172A] uppercase tracking-wider font-mono">
+                    Verified Services ({currentDomain.services.length})
+                  </span>
+                </div>
+                <span className="text-[11px] text-[#64748B]">
+                  Click inquire to submit direct CRM requirement
+                </span>
+              </div>
+
+              {/* Services Grid (2 Columns, Complete Details without truncation) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {currentDomain.services.map((service) => {
+                  const ServiceIcon = service.icon;
+
+                  return (
+                    <div
+                      key={service.id}
+                      className="p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-300 hover:shadow-sm transition-all group flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-start gap-2.5 mb-1.5">
+                          <div 
+                            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 border border-slate-100 mt-0.5"
+                            style={{
+                              backgroundColor: `${currentDomain.accentColor}10`,
+                              color: currentDomain.accentColor
+                            }}
+                          >
+                            <ServiceIcon className="w-3.5 h-3.5" />
+                          </div>
+                          <div className="min-w-0">
+                            <h5 className="text-xs font-bold text-[#0F172A] group-hover:text-[#2563EB] transition-colors">
+                              {service.name}
+                            </h5>
+                          </div>
+                        </div>
+
+                        <p className="text-[11px] text-[#475569] leading-relaxed mb-2 font-normal">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-2 border-t border-slate-100 mt-auto">
+                        <div className="flex flex-wrap gap-1">
+                          {service.tags && service.tags[0] && (
+                            <span className="text-[9px] font-medium px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
+                              {service.tags[0]}
+                            </span>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => handleServiceInquiry(service)}
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#2563EB] hover:text-blue-800 transition-colors cursor-pointer"
+                        >
+                          <span>Inquire</span>
+                          <Send className="w-2.5 h-2.5" />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+
+            {/* Bottom Bar inside Right Panel */}
+            <div className="mt-5 pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-[#64748B]">
+              <span className="font-mono text-[11px]">
+                Domain {currentDomain.number} &bull; {currentDomain.name} &bull; {currentDomain.company.name}
+              </span>
+              <Link
+                to={`/businesses#domain-${currentDomain.id}`}
+                onClick={onClose}
+                className="font-semibold text-[#2563EB] hover:underline inline-flex items-center gap-1"
+              >
+                <span>View Full Domain Specifications</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Bottom Banner */}
-        <div className="mt-4 pt-3.5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 bg-slate-50/50 -mx-6 -mb-6 px-6 py-3">
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Expanding opportunities across education, digital systems & enterprise solutions.
-          </span>
-          <span className="font-medium text-slate-700">Jay Murlidhar Group &bull; Built For Growth</span>
-        </div>
-      </motion.div>
-    </AnimatePresence>
+      </div>
+    </div>
   );
 }

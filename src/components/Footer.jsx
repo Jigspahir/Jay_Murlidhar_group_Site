@@ -11,9 +11,9 @@ const FOOTER_SECTIONS = [
     ],
   },
   {
-    title: 'OUR COMPANIES',
+    title: 'OUR BUSINESSES',
     links: [
-      { label: 'All Companies', href: '/ecosystem' },
+      { label: 'All Businesses', href: '/businesses' },
       { label: 'Technology', href: '/technology' },
       { label: 'Jan Suvidha', href: '/jan-suvidha' },
       { label: 'Insurance', href: '/insurance' },
@@ -160,7 +160,7 @@ export default function Footer({ onOpenContact }) {
 
             {/* Supporting Statement */}
             <p className="text-[13px] sm:text-[14px] text-[#64748B] font-normal leading-relaxed max-w-sm mb-4 sm:mb-5">
-              One Group. Multiple Companies.
+              One Group. Six Business Domains. Connected Solutions.
             </p>
 
             {/* Social Media Channels */}
