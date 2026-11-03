@@ -35,14 +35,14 @@ export default function HeroSection({ onOpenContact: _onOpenContact }) {
           <div className="lg:col-span-5 lg:pt-2 xl:pt-3">
 
             {/* Main Heading with Precise Optical Line-Height */}
-            <h1 className="fluid-hero-heading font-extrabold text-[#0B1220] tracking-[-0.035em] leading-[1.03] mb-5 sm:mb-6">
-              BUILDING<br />
-              WHAT'S <span className="bg-gradient-to-r from-[#0099FF] via-[#06B6D4] to-[#D946EF] bg-clip-text text-transparent">NEXT.</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] 2xl:text-[50px] font-extrabold text-[#0F172A] tracking-[-0.035em] leading-[1.08] mb-5 sm:mb-6">
+              ONE GROUP.<br />
+              <span className="text-[#2563EB] sm:whitespace-nowrap">MANY POSSIBILITIES.</span>
             </h1>
 
             {/* Supporting Copy — Understated, Readable */}
-            <p className="text-base sm:text-[17px] text-[#475569] leading-relaxed font-normal max-w-[480px] mb-3 sm:mb-3.5">
-              We build technology, business and digital experiences for people and organizations.
+            <p className="text-base sm:text-[17px] text-[#475569] leading-relaxed font-normal max-w-[500px] mb-3 sm:mb-3.5">
+              Jay Murlidhar Group brings together six business domains — Technology, Jan Suvidha, Insurance, Business Services, Travel and Retail — delivering connected solutions for individuals, businesses and organizations.
             </p>
 
             {/* Animated Specialization Line */}

@@ -25,32 +25,22 @@ export const JMG_OFFICIAL_DOMAINS = [
 export const JMG_HERO_SPECIALIZATIONS = [
   // 01 — Technology
   { text: 'Web & App Development', domain: 'Technology' },
-  { text: 'Autonomous AI Agents', domain: 'Technology' },
-  { text: 'Software & ERP Solutions', domain: 'Technology' },
-  { text: 'Digital Transformation', domain: 'Technology' },
+  { text: 'AI & Intelligent Automation', domain: 'Technology' },
 
   // 02 — Jan Suvidha
-  { text: 'Citizen & Public Services', domain: 'Jan Suvidha' },
-  { text: 'Government e-Services & RTO', domain: 'Jan Suvidha' },
-  { text: 'Digital Citizen Documentation', domain: 'Jan Suvidha' },
+  { text: 'Digital Citizen Services', domain: 'Jan Suvidha' },
 
   // 03 — Insurance
-  { text: 'General Insurance Services', domain: 'Insurance' },
-  { text: 'Life & Health Insurance Solutions', domain: 'Insurance' },
-  { text: 'Corporate Insurance', domain: 'Insurance' },
+  { text: 'Life & General Insurance', domain: 'Insurance' },
 
   // 04 — Business Services
-  { text: 'Business Registration & Compliance', domain: 'Business Services' },
-  { text: 'Corporate Operations & Filings', domain: 'Business Services' },
-  { text: 'Digital & Government Services', domain: 'Business Services' },
+  { text: 'Business & Documentation Support', domain: 'Business Services' },
 
   // 05 — Travel
   { text: 'Travel & Tour Services', domain: 'Travel' },
-  { text: 'Corporate & Educational Mobility', domain: 'Travel' },
 
   // 06 — Retail
-  { text: 'Mobile & Accessories', domain: 'Retail' },
-  { text: 'Retail Technology & Solutions', domain: 'Retail' }
+  { text: 'Mobile & Retail Solutions', domain: 'Retail' }
 ];
 
 export const SPECIALIZATION_STRINGS = JMG_HERO_SPECIALIZATIONS.map(item => item.text);
