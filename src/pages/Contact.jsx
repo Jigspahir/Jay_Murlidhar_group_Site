@@ -61,7 +61,7 @@ export default function Contact() {
           
           {/* Contact Details & Regional Offices */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+            <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-8 shadow-sm">
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <Building2 className="w-5 h-5 text-blue-600" />
                 Group Corporate Headquarters
@@ -134,8 +134,8 @@ export default function Contact() {
 
           {/* Form on Right */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Send an Enquiry</h2>
+            <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-8 shadow-sm">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Send an Enquiry</h2>
               <p className="text-sm text-slate-500 mb-8">
                 Fill in your details below and our group coordination team will respond within 24 hours.
               </p>
@@ -208,6 +208,7 @@ export default function Contact() {
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm text-slate-900 bg-white"
                       >
                         <option value="technology">Technology &amp; Digital Solutions</option>
+                        <option value="jan-suvidha">Jan Suvidha &amp; Citizen Services</option>
                         <option value="insurance">Jay Murlidhar Insurance</option>
                         <option value="business-services">Jay Murlidhar Business Services</option>
                         <option value="travel">Jay Murlidhar Tours</option>

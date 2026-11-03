@@ -35,7 +35,7 @@ export default function HeroSection({ onOpenContact: _onOpenContact }) {
           <div className="lg:col-span-5 lg:pt-2 xl:pt-3">
 
             {/* Main Heading with Precise Optical Line-Height */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] 2xl:text-[50px] font-extrabold text-[#0F172A] tracking-[-0.035em] leading-[1.08] mb-5 sm:mb-6">
+            <h1 className="text-[28px] xs:text-[34px] sm:text-4xl lg:text-[42px] xl:text-[46px] 2xl:text-[50px] font-extrabold text-[#0F172A] tracking-[-0.035em] leading-[1.08] mb-5 sm:mb-6">
               ONE GROUP.<br />
               <span className="text-[#2563EB] sm:whitespace-nowrap">MANY POSSIBILITIES.</span>
             </h1>
@@ -49,10 +49,10 @@ export default function HeroSection({ onOpenContact: _onOpenContact }) {
             <TypewriterSpecialization />
 
             {/* Call to Actions — Refined Editorial Buttons (Equal 46px height, subtle hover) */}
-            <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-3.5 mb-8 sm:mb-10 lg:mb-12">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 mb-8 sm:mb-10 lg:mb-12">
               <Link
                 to="/businesses"
-                className="inline-flex items-center justify-center gap-2 h-[44px] sm:h-[46px] px-5 sm:px-[22px] rounded-lg bg-[#0B1220] hover:bg-slate-800 text-white font-medium text-[13.5px] sm:text-sm tracking-tight transition-all duration-200 shadow-sm hover:shadow group w-full xs:w-auto"
+                className="inline-flex items-center justify-center gap-2 h-[44px] sm:h-[46px] px-5 sm:px-[22px] rounded-lg bg-[#0B1220] hover:bg-slate-800 text-white font-medium text-[13.5px] sm:text-sm tracking-tight transition-all duration-200 shadow-sm hover:shadow group w-full sm:w-auto"
               >
                 <span>Explore Our Businesses</span>
                 <ArrowRight className="w-4 h-4 text-white/90 group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -60,25 +60,25 @@ export default function HeroSection({ onOpenContact: _onOpenContact }) {
 
               <Link
                 to="/about"
-                className="inline-flex items-center justify-center gap-2 h-[44px] sm:h-[46px] px-5 sm:px-[22px] rounded-lg bg-white hover:bg-slate-50/80 text-[#0B1220] font-medium text-[13.5px] sm:text-sm tracking-tight border border-slate-200 hover:border-slate-300 shadow-sm transition-colors duration-200 w-full xs:w-auto"
+                className="inline-flex items-center justify-center gap-2 h-[44px] sm:h-[46px] px-5 sm:px-[22px] rounded-lg bg-white hover:bg-slate-50/80 text-[#0B1220] font-medium text-[13.5px] sm:text-sm tracking-tight border border-slate-200 hover:border-slate-300 shadow-sm transition-colors duration-200 w-full sm:w-auto"
               >
                 <span>About JMG</span>
               </Link>
             </div>
 
             {/* Baseline Context Telemetry Metrics (Directly below CTA buttons) */}
-            <div className="grid pt-5 border-t border-slate-200/70 grid-cols-3 gap-2 xs:gap-4 sm:gap-6 max-w-[420px] mb-8 lg:mb-0">
+            <div className="grid pt-5 border-t border-slate-200/70 grid-cols-3 gap-2 sm:gap-6 max-w-[420px] mb-5 lg:mb-0">
               <div>
-                <div className="font-mono text-[9.5px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-[0.14em] mb-1">Scope</div>
-                <div className="text-[13.5px] sm:text-[15px] font-bold text-slate-900 tracking-tight">6 Companies</div>
+                <div className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-[0.14em] mb-1">Scope</div>
+                <div className="text-xs sm:text-[15px] font-bold text-slate-900 tracking-tight">6 Companies</div>
               </div>
               <div>
-                <div className="font-mono text-[9.5px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-[0.14em] mb-1">Structure</div>
-                <div className="text-[13.5px] sm:text-[15px] font-bold text-slate-900 tracking-tight">6 Domains</div>
+                <div className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-[0.14em] mb-1">Structure</div>
+                <div className="text-xs sm:text-[15px] font-bold text-slate-900 tracking-tight">6 Domains</div>
               </div>
               <div>
-                <div className="font-mono text-[9.5px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-[0.14em] mb-1">Universe</div>
-                <div className="text-[13.5px] sm:text-[15px] font-bold text-[#0284C7] tracking-tight">Connected</div>
+                <div className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-[0.14em] mb-1">Universe</div>
+                <div className="text-xs sm:text-[15px] font-bold text-[#0284C7] tracking-tight">Connected</div>
               </div>
             </div>
 

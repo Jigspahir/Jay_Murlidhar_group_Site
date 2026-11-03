@@ -93,21 +93,21 @@ export default function Businesses() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-[#0F172A] mb-6 max-w-3xl">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-[#0F172A] mb-6 max-w-3xl">
               {OUR_BUSINESSES_HERO.headline}
             </h1>
 
             {/* Description */}
-            <p className="text-lg sm:text-xl text-[#475569] leading-relaxed font-normal mb-8 max-w-3xl">
+            <p className="text-base sm:text-xl text-[#475569] leading-relaxed font-normal mb-8 max-w-3xl">
               {OUR_BUSINESSES_HERO.description}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-12">
               <button
                 type="button"
                 onClick={handleScrollToDirectory}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm cursor-pointer w-full sm:w-auto"
               >
                 <span>Explore Businesses &amp; Services</span>
                 <ArrowRight className="w-4 h-4" />
@@ -116,7 +116,7 @@ export default function Businesses() {
               <button
                 type="button"
                 onClick={() => onOpenContact && onOpenContact({ interest: 'Jay Murlidhar Group', message: 'General business inquiry' })}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-[#0F172A] font-semibold text-sm transition-all shadow-sm cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-[#0F172A] font-semibold text-sm transition-all shadow-sm cursor-pointer w-full sm:w-auto"
               >
                 <span>Inquire With Us</span>
               </button>
@@ -141,7 +141,7 @@ export default function Businesses() {
       </section>
 
       {/* 3. Six Business Domains Interactive Selector */}
-      <section id="businesses-directory" className="py-8 bg-white border-b border-[#E2E8F0] sticky top-[57px] sm:top-[65px] z-30 shadow-xs">
+      <section id="businesses-directory" className="py-3.5 sm:py-4.5 bg-white border-b border-[#E2E8F0] sticky top-[57px] sm:top-[65px] z-30 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             
@@ -200,7 +200,7 @@ export default function Businesses() {
             <div 
               key={domain.id} 
               id={`domain-${domain.id}`}
-              className="scroll-mt-32 p-6 sm:p-8 lg:p-10 rounded-[24px] bg-white border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow"
+              className="scroll-mt-32 p-5 sm:p-8 lg:p-10 rounded-[20px] sm:rounded-[24px] bg-white border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow"
             >
               {/* Domain Header & Operating Company */}
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-8 border-b border-slate-200">
@@ -370,11 +370,11 @@ export default function Businesses() {
             Need custom technology development, government citizen services, insurance coverage, corporate compliance, institutional travel, or retail electronics? Our dedicated specialist teams are ready to assist you.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5">
             <button
               type="button"
               onClick={() => onOpenContact && onOpenContact({ interest: 'Jay Murlidhar Group', message: 'Group inquiry from Our Businesses directory' })}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-md cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-md cursor-pointer w-full sm:w-auto"
             >
               <span>Connect With Our Group</span>
               <ArrowRight className="w-4 h-4" />
@@ -382,7 +382,7 @@ export default function Businesses() {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-300 text-[#0F172A] font-semibold text-sm transition-all"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-300 text-[#0F172A] font-semibold text-sm transition-all w-full sm:w-auto"
             >
               <span>About Jay Murlidhar Group</span>
             </Link>

@@ -29,10 +29,10 @@ export default function MegaMenu({ isOpen, onClose, onOpenContact }) {
 
   return (
     <div 
-      className="absolute top-full left-1/2 -translate-x-1/2 w-[980px] max-w-[calc(100vw-32px)] pt-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+      className="fixed top-[56px] sm:top-[60px] left-1/2 -translate-x-1/2 w-[980px] max-w-[calc(100vw-32px)] max-h-[calc(100vh-80px)] pt-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
       onMouseLeave={onClose}
     >
-      <div className="bg-white border border-[#E2E8F0] rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.12)] overflow-hidden text-[#0F172A]">
+      <div className="bg-white border border-[#E2E8F0] rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.14)] overflow-hidden text-[#0F172A] flex flex-col max-h-[calc(100vh-90px)]">
         
         {/* Top Header Bar */}
         <div className="px-6 py-4 border-b border-[#E2E8F0] bg-slate-50/70 flex items-center justify-between">
@@ -56,10 +56,10 @@ export default function MegaMenu({ isOpen, onClose, onOpenContact }) {
         </div>
 
         {/* Two-Panel Layout */}
-        <div className="grid grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#E2E8F0] min-h-[460px]">
+        <div className="grid grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#E2E8F0] min-h-[400px] max-h-[calc(100vh-160px)]">
           
           {/* LEFT PANEL: 6 Domains Selector (Width: 4 cols) */}
-          <div className="col-span-12 md:col-span-4 p-3 bg-[#F8FAFC]/60 space-y-1.5 overflow-y-auto max-h-[520px]">
+          <div className="col-span-12 md:col-span-4 p-3 bg-[#F8FAFC]/60 space-y-1.5 overflow-y-auto max-h-[calc(100vh-160px)]">
             <div className="px-3 py-1.5 font-mono text-[11px] font-semibold text-[#94A3B8] uppercase tracking-wider">
               Select Business Domain
             </div>
@@ -119,7 +119,7 @@ export default function MegaMenu({ isOpen, onClose, onOpenContact }) {
           </div>
 
           {/* RIGHT PANEL: Operating Company & Verified Services (Width: 8 cols) */}
-          <div className="col-span-12 md:col-span-8 p-6 flex flex-col justify-between overflow-y-auto max-h-[520px]">
+          <div className="col-span-12 md:col-span-8 p-5 sm:p-6 flex flex-col justify-between overflow-y-auto max-h-[calc(100vh-160px)]">
             <div className="space-y-5">
               
               {/* Domain & Operating Company Header Card */}

@@ -79,7 +79,7 @@ export default function Navbar({ onOpenContact }) {
           scrolled ? 'py-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)]' : 'py-3.5'
         }`}
       >
-        <div className="max-w-[1240px] mx-auto px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex items-center justify-between">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex items-center justify-between">
           
           {/* Official Jay Murlidhar Group Logo */}
           <Link 
@@ -90,7 +90,7 @@ export default function Navbar({ onOpenContact }) {
             <img 
               src="/assets/jay-murlidhar-group-logo.png" 
               alt="Jay Murlidhar Group" 
-              className="h-9 sm:h-10 w-auto object-contain"
+              className="h-8 xs:h-9 sm:h-10 w-auto object-contain"
               loading="eager"
             />
           </Link>

@@ -62,7 +62,7 @@ export default function About() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-[#0F172A] mb-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-[#0F172A] mb-6">
               ONE GROUP.<br />
               MULTIPLE BUSINESSES.<br />
               <span className="text-[#2563EB]">
@@ -71,22 +71,22 @@ export default function About() {
             </h1>
 
             {/* Description */}
-            <p className="text-lg sm:text-xl text-[#475569] leading-relaxed font-normal mb-8">
+            <p className="text-base sm:text-xl text-[#475569] leading-relaxed font-normal mb-8">
               Jay Murlidhar Group is an ambitious multi-sector conglomerate with active operations spanning Technology &amp; Digital, Insurance, Business Services, Travel, and Retail.
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 to="/businesses"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm w-full sm:w-auto"
               >
                 <span>Explore Our Businesses</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <button
                 onClick={onOpenContact}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-[#0F172A] font-semibold text-sm transition-all shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-[#0F172A] font-semibold text-sm transition-all shadow-sm w-full sm:w-auto"
               >
                 Contact Leadership
               </button>
