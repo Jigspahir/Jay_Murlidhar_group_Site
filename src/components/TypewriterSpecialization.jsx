@@ -3,10 +3,10 @@ import { SPECIALIZATION_STRINGS } from '../data/heroSpecializations';
 
 export default function TypewriterSpecialization({
   specializations = SPECIALIZATION_STRINGS,
-  typeSpeed = 65,
-  deleteSpeed = 35,
+  typeSpeed = 80,
+  deleteSpeed = 38,
   pauseDelay = 1800,
-  restartDelay = 400
+  restartDelay = 320
 }) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window !== 'undefined' && window.matchMedia) {
@@ -78,30 +78,29 @@ export default function TypewriterSpecialization({
 
   return (
     <div 
-      className="flex items-baseline flex-wrap gap-x-1.5 text-sm sm:text-base text-[#475569] font-normal min-h-[44px] sm:min-h-[28px] mb-7 sm:mb-8"
+      className="text-sm sm:text-base text-[#475569] font-normal min-h-[48px] sm:min-h-[28px] mb-7 sm:mb-8 leading-6 sm:leading-7"
       aria-label={`We specialize in ${currentSpecialization}`}
     >
       {/* Static Prefix */}
-      <span className="text-[#64748B] font-medium whitespace-nowrap select-none">
+      <span className="block sm:inline text-[#64748B] font-medium select-none sm:mr-1.5">
         We specialize in
       </span>
 
       {/* Animated Dynamic Specialization Text */}
       <span 
-        className="font-semibold text-[#2563EB] inline-flex items-center tracking-tight"
+        className="inline-block font-semibold text-[#2563EB] tracking-tight align-baseline"
         aria-live="polite"
       >
         <span>{activeText}</span>
 
-        {/* Smooth Blinking Cursor */}
+        {/* Baseline anchor strut to ensure zero-height collapse never shifts vertical baseline */}
+        <span className="inline-block w-0 overflow-hidden select-none pointer-events-none" aria-hidden="true">&#8203;</span>
+
+        {/* Thin Blinking Cursor */}
         {!prefersReducedMotion && (
           <span
-            className="inline-block w-[2px] h-[1.15em] bg-[#2563EB] ml-1 rounded-full align-middle animate-pulse"
+            className="inline-block w-[1.5px] sm:w-[2px] h-[1.15em] bg-[#2563EB] ml-0.5 align-[-0.15em] rounded-sm animate-typewriter-cursor"
             aria-hidden="true"
-            style={{
-              animationDuration: '900ms',
-              animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)'
-            }}
           />
         )}
       </span>
