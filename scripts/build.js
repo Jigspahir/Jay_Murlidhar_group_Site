@@ -53,6 +53,25 @@ if (fs.existsSync(distFonts)) {
   console.log('✓ Copied dist/fonts -> fonts/');
 }
 
+// Copy favicons and manifest to root
+const faviconFiles = [
+  'favicon.ico',
+  'favicon-16x16.png',
+  'favicon-32x32.png',
+  'apple-touch-icon.png',
+  'favicon-192x192.png',
+  'favicon-512x512.png',
+  'site.webmanifest'
+];
+for (const file of faviconFiles) {
+  const distFile = path.join(distDir, file);
+  const rootFile = path.join(rootDir, file);
+  if (fs.existsSync(distFile)) {
+    fs.copyFileSync(distFile, rootFile);
+    console.log(`✓ Copied dist/${file} -> ${file}`);
+  }
+}
+
 // Ensure CNAME exists
 const rootCname = path.join(rootDir, 'CNAME');
 if (!fs.existsSync(rootCname) || fs.readFileSync(rootCname, 'utf8').trim() === '') {
