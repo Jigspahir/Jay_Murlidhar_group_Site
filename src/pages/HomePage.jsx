@@ -4,6 +4,7 @@ import IntroSection from '../components/IntroSection';
 import EducationTechnology from '../components/EducationTechnology';
 import EducationSection from '../components/EducationSection';
 import HowWeBuild from '../components/HowWeBuild';
+import OurExperts from '../components/OurExperts';
 import Careers from '../components/Careers';
 import FinalCTA from '../components/FinalCTA';
 
@@ -25,10 +26,13 @@ export default function HomePage({ onOpenContact }) {
       {/* 09 HOW WE BUILD */}
       <HowWeBuild />
 
-      {/* 10 CAREERS */}
+      {/* 10 OUR EXPERTS */}
+      <OurExperts onOpenContact={onOpenContact} />
+
+      {/* 11 CAREERS */}
       <Careers onOpenContact={onOpenContact} />
 
-      {/* 11 FINAL CTA */}
+      {/* 12 FINAL CTA */}
       <FinalCTA onOpenContact={onOpenContact} />
     </>
   );
